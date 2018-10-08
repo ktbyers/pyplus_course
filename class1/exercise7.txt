@@ -1,0 +1,17 @@
+
+
+$ git push origin test
+Username for 'https://github.com': ktbyers
+Password for 'https://ktbyers@github.com': 
+Counting objects: 9, done.
+Compressing objects: 100% (5/5), done.
+Writing objects: 100% (9/9), 734 bytes | 734.00 KiB/s, done.
+Total 9 (delta 2), reused 0 (delta 0)
+remote: Resolving deltas: 100% (2/2), completed with 1 local object.
+remote: 
+remote: Create a pull request for 'test' on GitHub by visiting:
+remote:      https://github.com/ktbyers/pynetb/pull/new/test
+remote: 
+To https://github.com/ktbyers/pynetb
+ * [new branch]      test -> test
+

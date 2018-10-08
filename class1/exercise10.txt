@@ -1,0 +1,45 @@
+
+
+$ git status
+On branch master
+Your branch is up-to-date with 'origin/master'.
+
+nothing to commit, working tree clean
+
+
+$ ls
+dir1  dir2  file1.py  file2.py  file3.py  LICENSE  README.md
+
+# Remove a file that is in the repository
+$ git rm file3.py 
+rm 'file3.py'
+
+$ ls
+dir1  dir2  file1.py  file2.py  LICENSE  README.md
+
+
+$ git status
+On branch master
+Your branch is up-to-date with 'origin/master'.
+
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+	deleted:    file3.py
+
+
+# Commit the change
+$ git commit -m "Deleting file3.py"
+[master 4c854a0] Deleting file3.py
+ 1 file changed, 3 deletions(-)
+ delete mode 100644 file3.py
+
+
+$ git status
+On branch master
+Your branch is ahead of 'origin/master' by 1 commit.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working tree clean
+
+

@@ -1,0 +1,61 @@
+
+$ git status
+On branch master
+Your branch is ahead of 'origin/master' by 1 commit.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working tree clean
+
+
+# Make a change to file2.py
+$ vi file2.py 
+
+$ git diff
+diff --git a/file2.py b/file2.py
+index af94040..98c8c45 100644
+--- a/file2.py
++++ b/file2.py
+@@ -1,8 +1,5 @@
+ for i in range(100):
+     print(i)
+ 
+-print("something")
+-print("something")
+-print("something")
+-print("something")
+-print("something")
++for i in range(4):
++    print("something")
+
+
+# Change pending, but not staged
+$ git status
+On branch master
+Your branch is ahead of 'origin/master' by 1 commit.
+  (use "git push" to publish your local commits)
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+	modified:   file2.py
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+
+# Discard the change
+$ git checkout -- ./file2.py 
+
+
+# No more changes pending
+$ git status
+On branch master
+Your branch is ahead of 'origin/master' by 1 commit.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working tree clean
+
+
+$ git diff
+$
+

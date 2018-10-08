@@ -1,0 +1,80 @@
+
+# Change the README.md file on the AWS server (also was changed in a different way on GitHub)
+$ vi README.md 
+
+# Add and commit the change
+$ git add README.md 
+$ git commit -m "Creating a merge conflict"
+[master eee4f32] Creating a merge conflict
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+
+# Pull 'master' branch from GitHub (see 'CONFLICT' message below)
+$ git pull origin master
+remote: Enumerating objects: 5, done.
+remote: Counting objects: 100% (5/5), done.
+remote: Compressing objects: 100% (2/2), done.
+remote: Total 3 (delta 1), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (3/3), done.
+From https://github.com/ktbyers/pynetb
+ * branch            master     -> FETCH_HEAD
+   a70dd35..268aa7c  master     -> origin/master
+Auto-merging README.md
+CONFLICT (content): Merge conflict in README.md
+Automatic merge failed; fix conflicts and then commit the result.
+
+
+# State of README.md file
+$ cat README.md 
+# pynetb
+
+<<<<<<< HEAD
+Create a merge conflict
+=======
+# Repository for use in Git videos
+>>>>>>> 268aa7cea49a04b9f349003c70a8a049aee4e83c
+
+
+# Fix the file
+$ vi README.md 
+
+
+# New state of README.md (keep the changes I want)
+$ cat README.md 
+# pynetb
+
+### Repository for use in Git videos
+
+
+$ git status
+On branch master
+Your branch and 'origin/master' have diverged,
+and have 2 and 1 different commits each, respectively.
+  (use "git pull" to merge the remote branch into yours)
+
+You have unmerged paths.
+  (fix conflicts and run "git commit")
+  (use "git merge --abort" to abort the merge)
+
+Unmerged paths:
+  (use "git add <file>..." to mark resolution)
+
+	both modified:   README.md
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+
+# Add and commit the change
+$ git add README.md 
+$ git commit -m "Fixing merge conflict"
+[master e40272f] Fixing merge conflict
+
+
+$ git status
+On branch master
+Your branch is ahead of 'origin/master' by 3 commits.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working tree clean
+
+
