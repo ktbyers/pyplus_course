@@ -1,0 +1,114 @@
+
+$ git branch
+* master
+
+$ git checkout -b test master
+Switched to a new branch 'test'
+
+# Branch 'test' now exists and is active
+$ git branch
+  master
+* test
+
+
+$ ls
+file1.py  file2.py  file3.py  LICENSE  README.md
+
+
+# Create the directories and files
+$ mkdir dir1
+$ mkdir dir2
+$ vi dir1/my_code1.py
+$ vi dir2/my_code2.py
+$ git add dir1
+$ git add dir2
+
+$ git status
+On branch test
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+	new file:   dir1/my_code1.py
+	new file:   dir2/my_code2.py
+
+
+# Committing the two new files
+$ git commit -m "Adding two directories and two files"
+[test af27682] Adding two directories and two files
+ 2 files changed, 2 insertions(+)
+ create mode 100644 dir1/my_code1.py
+ create mode 100644 dir2/my_code2.py
+
+$ git status
+On branch test
+nothing to commit, working tree clean
+
+
+# Current status of 'git log'
+$ git log
+commit af27682945ea9d0336d70fd50e75d6763db3715d (HEAD -> test)
+Author: Kirk Byers <ktbyers@twb-tech.com>
+Date:   Mon Oct 8 16:34:55 2018 -0700
+
+    Adding two directories and two files
+
+commit fdc6fff4ec0a6a253292bf549a987057d04e37a9 (origin/master, origin/HEAD, master)
+Author: Kirk Byers <ktbyers@twb-tech.com>
+Date:   Mon Oct 8 12:58:28 2018 -0700
+
+    Adding three files into the repository
+
+commit c3d1964c58dacbb140b5cf893c77e9ebda7b8330
+Author: Kirk Byers <ktbyers@twb-tech.com>
+Date:   Mon Oct 8 12:39:40 2018 -0700
+
+    Initial commit
+
+
+
+$ ls
+dir1  dir2  file1.py  file2.py  file3.py  LICENSE  README.md
+
+# Modify one of the existing files in the repository
+$ vi file2.py 
+$ git status
+On branch test
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+	modified:   file2.py
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+
+# Use 'git diff' on the file
+$ git diff ./file2.py 
+diff --git a/file2.py b/file2.py
+index 26af340..af94040 100644
+--- a/file2.py
++++ b/file2.py
+@@ -1,2 +1,8 @@
+ for i in range(100):
+     print(i)
++
++print("something")
++print("something")
++print("something")
++print("something")
++print("something")
+
+
+# Add the changed file to the repository
+$ git add file2.py 
+$ git commit -m "Modifying file2.py"
+[test 9b120ee] Modifying file2.py
+ 1 file changed, 6 insertions(+)
+
+
+# Now have a clean working directory
+$ git status
+On branch test
+nothing to commit, working tree clean
+
+
