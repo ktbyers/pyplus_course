@@ -3,10 +3,10 @@ from getpass import getpass
 from pprint import pprint
 
 device1 = {
-    "host": "cisco1.lasthop.io",
+    "host": "cisco3.lasthop.io",
     "username": "pyclass",
     "password": getpass(),
-    "device_type": "cisco_ios_telnet",
+    "device_type": "cisco_ios",
 }
 
 net_connect = ConnectHandler(**device1)
