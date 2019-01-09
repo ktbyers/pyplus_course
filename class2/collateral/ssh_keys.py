@@ -1,5 +1,4 @@
 from netmiko import ConnectHandler
-from pprint import pprint
 
 device1 = {
     "device_type": "cisco_ios",

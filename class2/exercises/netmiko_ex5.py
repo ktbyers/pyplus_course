@@ -1,6 +1,5 @@
 from netmiko import ConnectHandler
 from getpass import getpass
-from datetime import datetime
 
 
 def display_output(output):
