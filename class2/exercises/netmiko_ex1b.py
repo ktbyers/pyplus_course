@@ -34,6 +34,7 @@ output += net_connect.send_command(
 output += net_connect.send_command(
     "\n", expect_string=r"#", strip_prompt=False, strip_command=False
 )
+net_connect.disconnect()
 
 print()
 print(output)

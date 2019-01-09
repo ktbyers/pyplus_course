@@ -27,6 +27,7 @@ print()
 cmd = "show lldp neighbors detail"
 start_time = datetime.now()
 output = net_connect.send_command(cmd, delay_factor=8)
+net_connect.disconnect()
 end_time = datetime.now()
 print("#" * 80)
 print(output)
