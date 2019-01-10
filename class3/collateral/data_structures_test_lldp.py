@@ -8,7 +8,11 @@ lldp = {
             "remote_port": "Ethernet2/1",
             "remote_port_description": "Ethernet2/1",
             "remote_system_name": "nxos2.twb-tech.com",
-            "remote_system_description": "Cisco NX-OS(tm) titanium, Software (titanium-d1), Version 7.3(1)D1(1), Interim version 7.3(1)D1(0.10), RELEASE SOFTWARE Copyright (c) 2002-2013, 2015 by Cisco Systems, Inc. Compiled 1/11/2016 16:00:00",
+            "remote_system_description": (
+                "Cisco NX-OS(tm) titanium, Software (titanium-d1), Version 7.3(1)D1(1), Interim"
+                " version 7.3(1)D1(0.10), RELEASE SOFTWARE Copyright (c) 2002-2013, 2015 by Cisco"
+                " Systems, Inc. Compiled 1/11/2016 16:00:00"
+            ),
             "remote_system_capab": "B, R",
             "remote_system_enable_capab": "B, R",
         }
@@ -20,7 +24,11 @@ lldp = {
             "remote_port": "Ethernet2/2",
             "remote_port_description": "Ethernet2/2",
             "remote_system_name": "nxos2.twb-tech.com",
-            "remote_system_description": "Cisco NX-OS(tm) titanium, Software (titanium-d1), Version 7.3(1)D1(1), Interim version 7.3(1)D1(0.10), RELEASE SOFTWARE Copyright (c) 2002-2013, 2015 by Cisco Systems, Inc. Compiled 1/11/2016 16:00:00",
+            "remote_system_description": (
+                "Cisco NX-OS(tm) titanium, Software (titanium-d1), Version 7.3(1)D1(1), Interim"
+                " version 7.3(1)D1(0.10), RELEASE SOFTWARE Copyright (c) 2002-2013, 2015 by Cisco"
+                " Systems, Inc. Compiled 1/11/2016 16:00:00"
+            ),
             "remote_system_capab": "B, R",
             "remote_system_enable_capab": "B, R",
         }
@@ -32,7 +40,11 @@ lldp = {
             "remote_port": "Ethernet2/3",
             "remote_port_description": "Ethernet2/3",
             "remote_system_name": "nxos2.twb-tech.com",
-            "remote_system_description": "Cisco NX-OS(tm) titanium, Software (titanium-d1), Version 7.3(1)D1(1), Interim version 7.3(1)D1(0.10), RELEASE SOFTWARE Copyright (c) 2002-2013, 2015 by Cisco Systems, Inc. Compiled 1/11/2016 16:00:00",
+            "remote_system_description": (
+                "Cisco NX-OS(tm) titanium, Software (titanium-d1), Version 7.3(1)D1(1), Interim"
+                " version 7.3(1)D1(0.10), RELEASE SOFTWARE Copyright (c) 2002-2013, 2015 by Cisco"
+                " Systems, Inc. Compiled 1/11/2016 16:00:00"
+            ),
             "remote_system_capab": "B, R",
             "remote_system_enable_capab": "B, R",
         }
@@ -44,7 +56,11 @@ lldp = {
             "remote_port": "Ethernet2/4",
             "remote_port_description": "Ethernet2/4",
             "remote_system_name": "nxos2.twb-tech.com",
-            "remote_system_description": "Cisco NX-OS(tm) titanium, Software (titanium-d1), Version 7.3(1)D1(1), Interim version 7.3(1)D1(0.10), RELEASE SOFTWARE Copyright (c) 2002-2013, 2015 by Cisco Systems, Inc. Compiled 1/11/2016 16:00:00",
+            "remote_system_description": (
+                "Cisco NX-OS(tm) titanium, Software (titanium-d1), Version 7.3(1)D1(1), Interim"
+                " version 7.3(1)D1(0.10), RELEASE SOFTWARE Copyright (c) 2002-2013, 2015 by Cisco"
+                " Systems, Inc. Compiled 1/11/2016 16:00:00"
+            ),
             "remote_system_capab": "B, R",
             "remote_system_enable_capab": "B, R",
         }
