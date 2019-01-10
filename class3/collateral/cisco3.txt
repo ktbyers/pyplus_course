@@ -1,0 +1,163 @@
+Building configuration...
+
+
+Current configuration : 3796 bytes
+!
+! Last configuration change at 20:19:14 UTC Wed Oct 3 2018 by pyclass
+!
+version 16.8
+service timestamps debug datetime msec
+service timestamps log datetime msec
+platform qfp utilization monitor load 80
+no platform punt-keepalive disable-kernel-core
+!
+hostname pynet-pod2-rtr1
+!
+boot-start-marker
+boot-end-marker
+!
+!
+enable secret 5 $1$CVrv$mxcKWNbk323lXwxbxGk9I/
+!
+aaa new-model
+!
+!
+aaa authentication login default local
+aaa authorization exec default local if-authenticated 
+!
+!
+!
+!
+!
+!
+aaa session-id common
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+subscriber templating
+!
+!
+multilink bundle-name authenticated
+!
+!
+!
+crypto pki trustpoint TP-self-signed-2174981821
+ enrollment selfsigned
+ subject-name cn=IOS-Self-Signed-Certificate-2174981821
+ revocation-check none
+ rsakeypair TP-self-signed-2174981821
+!
+!
+crypto pki certificate chain TP-self-signed-2174981821
+ certificate self-signed 01
+  30820330 30820218 A0030201 02020101 300D0609 2A864886 F70D0101 05050030 
+  31312F30 2D060355 04031326 494F532D 53656C66 2D536967 6E65642D 43657274 
+  69666963 6174652D 32313734 39383138 3231301E 170D3138 31303031 32303432 
+  30365A17 0D323030 31303130 30303030 305A3031 312F302D 06035504 03132649 
+  4F532D53 656C662D 5369676E 65642D43 65727469 66696361 74652D32 31373439 
+  38313832 31308201 22300D06 092A8648 86F70D01 01010500 0382010F 00308201 
+  0A028201 0100AE61 1240BC1D 1B5DD592 4A71EA23 51A30AD7 64EF058D 01C2F666 
+  D06F7547 5FC9BDAC 1FB56D91 80C010BA FAC9A0AB FCF5E169 82F8F6FE AAE44888 
+  A5201C57 FCA70ED5 620B210F 3C8980AC E04799FB A8ABAA94 A892C064 5322FD56 
+  D2F2A064 29506C8D 4D88A655 A4B2938D C578BA11 DA0B354B FB38C156 00175D24 
+  52927F23 A6D948DE AF3D83EC 0B028BFE 2174282B 48F1ACEA D1DBFE18 E06AC205 
+  3965C474 D01B0A01 EA7F72EE 9F42FB9B EB11B8B4 146AD498 F3733FC8 A9D8EAA7 
+  57EBF42B 5E029496 8CBD8A9C B06C67A9 EF288507 B336E0DF 58C4ABCA C3B23743 
+  ACF94BB8 81F6D965 3603AE0E E327EDE2 5B0F698A 624AB3DB CB8AD175 42E0D712 
+  7890A0D3 7AAF0203 010001A3 53305130 0F060355 1D130101 FF040530 030101FF 
+  301F0603 551D2304 18301680 14661857 CB31B3D1 0F61037D 69B01F58 30008C5D 
+  52301D06 03551D0E 04160414 661857CB 31B3D10F 61037D69 B01F5830 008C5D52 
+  300D0609 2A864886 F70D0101 05050003 82010100 09E07941 BA4C1FF9 42AF2159 
+  B3DBD2EA 887AA55B 2E36BB5B C6EAB7DA E6975B0C 866B1DA7 BD3195F7 0C66C7DC 
+  521626FB 17B3B05A 4608EB83 89A51F3E 7C0C4755 44A0E443 E3E2317A E28DCE2C 
+  6E47B2D6 B60BDE05 05900DF1 766229D0 ADE7DBB0 74D4E209 42F99450 A4BE1B8C 
+  55E14114 E229BEF9 F94A6644 E8A07BBF 3A76E3FC 2361ED91 9C2E0EDC 4B8AB9D1 
+  FDA17B65 606F7B9F 442D4A54 B5BCE40E 310F9263 B4D9B925 D5BDF1F6 30DB5AD7 
+  5A4727BA 1B2A9E40 B6A59D22 6FCE0819 CD4A50AD 5AC6D599 7CC8DF6C 096B4AAE 
+  A9BC99E5 CAAF0CC2 D96B1C34 488C8E20 E75B4944 C56F53FE A4515FD5 556A192B 
+  CE2ECFC5 C475F170 9116B9F1 F9D28168 9D9FC652
+  	quit
+!
+license udi pid C1111-4P sn FGL222290LB
+no license smart enable
+!
+diagnostic bootup level minimal
+!
+spanning-tree extend system-id
+!
+!
+username pyclass privilege 15 secret 5 $1$7t3j$Fiq6/Z/PT7PjYbPgnGQCe.
+!
+redundancy
+ mode none
+!
+!
+vlan internal allocation policy ascending
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/0/0
+ ip address 10.220.88.22 255.255.255.0
+ negotiation auto
+!
+interface GigabitEthernet0/0/1
+ no ip address
+ shutdown
+ negotiation auto
+!
+interface GigabitEthernet0/1/0
+!
+interface GigabitEthernet0/1/1
+!
+interface GigabitEthernet0/1/2
+!
+interface GigabitEthernet0/1/3
+!
+interface Vlan1
+ no ip address
+!
+ip forward-protocol nd
+no ip http server
+no ip http secure-server
+ip route 0.0.0.0 0.0.0.0 10.220.88.1
+ip ssh version 2
+!
+!
+!
+!
+!
+!
+!
+!
+control-plane
+!
+!
+line con 0
+ logging synchronous
+ transport input none
+ stopbits 1
+line vty 0 4
+ exec-timeout 20 0
+ transport input telnet ssh
+!
+wsma agent exec
+!
+wsma agent config
+!
+wsma agent filesys
+!
+wsma agent notify
+!
+!
+end
