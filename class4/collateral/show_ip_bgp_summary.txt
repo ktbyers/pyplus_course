@@ -1,0 +1,27 @@
+BGP router identifier 128.223.51.103, local AS number 6447
+BGP table version is 17759054, main routing table version 17759054
+767218 network entries using 190270064 bytes of memory
+24171368 path entries using 2900564160 bytes of memory
+3620923/128444 BGP path/bestpath attribute entries using 897988904 bytes of memory
+3345383 BGP AS-PATH entries using 169418222 bytes of memory
+1 BGP ATTR_SET entries using 40 bytes of memory
+113372 BGP community entries using 13738022 bytes of memory
+963 BGP extended community entries using 95790 bytes of memory
+0 BGP route-map cache entries using 0 bytes of memory
+0 BGP filter-list cache entries using 0 bytes of memory
+BGP using 4172075162 total bytes of memory
+BGP activity 1482496/651702 prefixes, 127924161/102519944 paths, scan interval 60 secs
+
+Neighbor        V           AS MsgRcvd MsgSent   TblVer  InQ OutQ Up/Down  State/PfxRcd
+4.69.184.193    4         3356 567414152   26782 17758358    0    0 1w4d       709381
+5.101.110.2     4        14061       0       0        1    0    0 never    Active
+12.0.1.63       4         7018 2986859   13810 17758358    0    0 1w1d       710459
+37.139.139.0    4        57866 3187219   27028 17758358    0    0 1w1d       706534
+64.71.137.241   4         6939 8006275   40449 17758358    0    0 3w4d       730825
+66.59.190.221   4         6539       0       0        1    0    0 never    Active
+66.110.0.86     4         6453       0       0        1    0    0 never    Idle
+66.185.128.48   4         1668       0       0        1    0    0 never    Active
+69.31.111.244   4         4436       0       0        1    0    0 never    Active
+80.241.176.31   4        20771       0       0        1    0    0 never    Active
+89.149.178.10   4         3257 3530465    8160 17758358    0    0 3w4d       710732
+91.218.184.60   4        49788 1010000    2919 17758358    0    0 2d10h      712488

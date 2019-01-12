@@ -1,0 +1,23 @@
+Value MODEL (\S+)
+Value MEMORY (\d+K)
+Value SERIAL_NUMBER (\S+)
+Value CONFIG_REGISTER (0x\d+)
+
+Start
+  ^cisco ${MODEL}\s+.*processor with ${MEMORY}/\d+K bytes of memory
+  ^Processor board ID ${SERIAL_NUMBER}
+  ^Configuration register is ${CONFIG_REGISTER} -> Record
+    
+EOF
+
+#cisco C1111-4P (1RU) processor with 1456982K/6147K bytes of memory.
+#Processor board ID FGL222290LB
+#1 Virtual Ethernet interface
+#6 Gigabit Ethernet interfaces
+#32768K bytes of non-volatile configuration memory.
+#4194304K bytes of physical memory.
+#2863103K bytes of flash memory at bootflash:.
+#0K bytes of WebUI ODM Files at webui:.
+#
+#Configuration register is 0x2102
+#
