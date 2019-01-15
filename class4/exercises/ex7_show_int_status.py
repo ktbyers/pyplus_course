@@ -1,10 +1,11 @@
+#!/usr/bin/env python
 from pprint import pprint
 import textfsm
 
-template_file = "show_int_status2.tpl"
+template_file = "ex2_show_int_status.tpl"
 template = open(template_file)
 
-with open("show_int_status.txt") as f:
+with open("ex2_show_int_status.txt") as f:
     raw_text_data = f.read()
 
 # The argument 'template' is a file handle and 'raw_text_data' is a string.
