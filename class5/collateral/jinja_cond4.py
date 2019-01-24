@@ -8,7 +8,7 @@ env.loader = FileSystemLoader(".")
 bgp_vars = {
     "bgp_peer1": True,
     "peer_ip": "1.1.1.1",
-#    "bgp_policy": True,
+    #    "bgp_policy": True,
 }
 
 template_file = "bgp_config2.j2"

@@ -7,15 +7,13 @@ env = Environment(undefined=StrictUndefined)
 env.loader = FileSystemLoader(".")
 
 arp_entry = {
-        "interface": "mgmt0", 
-        "ip": "10.0.0.72", 
-        "mac": "2C:C2:60:36:32:21", 
-        "age": 140.0
+    "interface": "mgmt0",
+    "ip": "10.0.0.72",
+    "mac": "2C:C2:60:36:32:21",
+    "age": 140.0,
 }
 
-template_vars = {
-    "arp_entry": arp_entry,
-}
+template_vars = {"arp_entry": arp_entry}
 
 template_file = "template1.j2"
 template = env.get_template(template_file)
