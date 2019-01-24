@@ -1,0 +1,6 @@
+{%- for port_number in range(1, 25) %}
+interface GigabitEthernet0/1/{{ port_number }}
+ switchport access vlan 400
+ switchport mode access
+!
+{%- endfor %}

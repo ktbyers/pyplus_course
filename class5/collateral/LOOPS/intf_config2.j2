@@ -1,0 +1,6 @@
+{%- for intf in intf_list %}
+interface {{ intf }}
+ switchport access vlan 400
+ switchport mode access
+!
+{%- endfor %}
