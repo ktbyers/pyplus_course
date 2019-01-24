@@ -1,0 +1,20 @@
+
+Some text
+Hello World
+
+ARP Interface:
+{{ arp_entry["interface"] }}
+
+MAC --> IP
+{{ arp_entry['mac'] }} --> {{ arp_entry["ip"] }}
+
+For loop in dict
+{%- for k in arp_entry %}
+    {{ k }}
+{%- endfor %}
+
+For loop in dict (using items)
+{%- for k, v in arp_entry.items() %}
+    {{ k }} --> {{ v }}
+{%- endfor %}
+

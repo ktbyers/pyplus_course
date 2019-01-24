@@ -1,0 +1,15 @@
+{%- set var1 = 'cisco' %}
+{%- set var2 = 'arista' %}
+{%- set var3 = 'juniper' %}
+{%- set my_list = ['cisco', 'arista', 'juniper'] %}
+
+{{ var1 | capitalize | upper | lower }}
+
+{{ var2 | capitalize | center(80) }}
+
+{{ var4 | default("Some Default Value") }}
+
+{#
+
+{{ my_list }}
+#}
