@@ -18,4 +18,3 @@ my_template = example_expr
 j2_template = Template(my_template)
 output = j2_template.render()
 print(output)
-

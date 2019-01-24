@@ -17,4 +17,3 @@ router bgp 42
 j2_template = Template(bgp_config)
 output = j2_template.render()
 print(output)
-

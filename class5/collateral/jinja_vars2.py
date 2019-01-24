@@ -10,4 +10,3 @@ router bgp {{ bgp_as }}
 j2_template = Template(bgp_config)
 output = j2_template.render(bgp_as=22, router_id="1.1.1.1", peer1="10.20.30.1")
 print(output)
-
