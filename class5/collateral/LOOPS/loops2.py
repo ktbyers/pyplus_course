@@ -12,9 +12,7 @@ for intf_number in range(24):
     intf_name = f"{base_intf}{intf_number}"
     intf_list.append(intf_name)
 
-intf_vars = {
-    "intf_list": intf_list,
-}
+intf_vars = {"intf_list": intf_list}
 
 template_file = "intf_config2.j2"
 template = env.get_template(template_file)
