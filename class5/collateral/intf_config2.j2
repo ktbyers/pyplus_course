@@ -1,0 +1,9 @@
+interface GigabitEthernet0/1/0
+ {%- if mode == "access" %}
+ switchport access vlan 400
+ switchport mode access
+ {%- elif mode == "trunk" %}
+ switchport trunk native vlan 1
+ switchport trunk allowed vlan 1,300,400
+ switchport mode trunk
+ {%- endif %}
