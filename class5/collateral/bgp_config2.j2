@@ -1,0 +1,9 @@
+ {%- if bgp_peer1 is defined %}
+ neighbor {{ peer_ip }}
+  address-family ipv4 unicast
+   {%- if bgp_policy is defined %}
+   route-policy ALLOW in
+   route-policy ALLOW out
+   {%- endif %}
+ {%- endif %}
+
