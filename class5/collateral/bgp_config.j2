@@ -1,0 +1,4 @@
+router bgp {{ bgp_as }}
+ bgp router-id {{ router_id }}
+ bgp log-neighbor-changes
+ neighbor {{ peer1 }} remote-as 44
