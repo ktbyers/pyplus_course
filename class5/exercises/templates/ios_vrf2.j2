@@ -1,0 +1,20 @@
+{%- for vrf in my_vrfs %}
+vrf definition {{ vrf.vrf_name }}
+ rd {{ vrf.rd_number }}
+ {%- if vrf.ipv4_af is defined %}
+ !
+ address-family ipv4
+  route-target export {{ vrf.rd_number }}
+  route-target import {{ vrf.rd_number }}
+ exit-address-family
+ {%- endif %}
+ {%- if vrf.ipv4_af is defined %}
+ !
+ address-family ipv6
+  route-target export {{ vrf.rd_number }}
+  route-target import {{ vrf.rd_number }}
+ exit-address-family
+ {%- endif %}
+!
+!
+{%- endfor %} 
