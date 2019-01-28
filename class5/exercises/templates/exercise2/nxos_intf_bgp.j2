@@ -1,0 +1,8 @@
+
+interface {{ interface }}
+  ip address {{ ipv4_address }}/{{ ipv4_netmask }}
+
+router bgp {{ local_as }}
+  neighbor {{ peer_ip }} remote-as {{ local_as }}
+    address-family ipv4 unicast
+
