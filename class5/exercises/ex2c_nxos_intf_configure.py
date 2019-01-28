@@ -10,7 +10,7 @@ from my_devices import nxos1, nxos2
 
 if __name__ == "__main__":
     env = Environment(undefined=StrictUndefined)
-    env.loader = FileSystemLoader('./templates/exercise2')
+    env.loader = FileSystemLoader("./templates/exercise2")
 
     template_file = "nxos_intf_bgp.j2"
     interface = "Ethernet2/1"
@@ -45,7 +45,7 @@ if __name__ == "__main__":
         j2_vars = tmp_device.pop("j2_vars")
         template = env.get_template(template_file)
         cfg = template.render(**j2_vars)
-        device_name = device['j2_vars']['device_name']
+        device_name = device["j2_vars"]["device_name"]
         print(f" {device_name} ".center(80, "#"))
         print(f"\n>>> Template output {device_name}")
         print(cfg)
@@ -55,7 +55,7 @@ if __name__ == "__main__":
         # Establish Netmiko Connection
         net_connect = ConnectHandler(**tmp_device)
         # Store the SSH connection for later
-        device['ssh_conn'] = net_connect
+        device["ssh_conn"] = net_connect
         print(f">>> Configuring {device_name}")
         output = net_connect.send_config_set(cfg_lines)
         print(output)
@@ -69,8 +69,8 @@ if __name__ == "__main__":
     print("\n\n")
     print(">>> Testing ping and BGP")
     for device in (nxos1,):
-        net_connect = device['ssh_conn']
-        remote_ip = device['j2_vars']['peer_ip']
+        net_connect = device["ssh_conn"]
+        remote_ip = device["j2_vars"]["peer_ip"]
         output = net_connect.send_command(f"ping {remote_ip}")
         print(output)
         if "64 bytes from" not in output:
@@ -85,10 +85,11 @@ if __name__ == "__main__":
         try:
             # If this is an integer, the BGP session reached the established state
             int(prefix_received)
-            print(f"BGP reached the established state. Prefixes received {prefix_recieved}")
+            print(
+                f"BGP reached the established state. Prefixes received {prefix_received}"
+            )
         except ValueError:
             print("BGP failed to reach the established state")
-        print(output)
         net_connect.disconnect()
 
     print("\n\n")
