@@ -54,7 +54,7 @@ if __name__ == "__main__":
 
         # Establish Netmiko Connection
         net_connect = ConnectHandler(**tmp_device)
-        # Store the SSH connection for later
+        # Store the SSH connection for later (so I don't have to reconnect)
         device["ssh_conn"] = net_connect
         print(f">>> Configuring {device_name}")
         output = net_connect.send_config_set(cfg_lines)
@@ -71,11 +71,15 @@ if __name__ == "__main__":
     for device in (nxos1,):
         net_connect = device["ssh_conn"]
         remote_ip = device["j2_vars"]["peer_ip"]
+
+        # Test ping
         output = net_connect.send_command(f"ping {remote_ip}")
         print(output)
         if "64 bytes from" not in output:
             print("\nPing failed!!!")
         print("\n\n")
+
+        # Test BGP
         bgp_verify = f"show ip bgp summary | include {remote_ip}"
         output = net_connect.send_command(bgp_verify)
         # Retrieve the State/PfxRcd field which is the last field
@@ -90,6 +94,10 @@ if __name__ == "__main__":
             )
         except ValueError:
             print("BGP failed to reach the established state")
+
+    # All done - disconnect on both devices
+    for device in (nxos1, nxos2):
+        net_connect = device["ssh_conn"]
         net_connect.disconnect()
 
     print("\n\n")
