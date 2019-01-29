@@ -2,7 +2,7 @@ from jinja2 import FileSystemLoader, StrictUndefined
 from jinja2.environment import Environment
 
 env = Environment(undefined=StrictUndefined)
-env.loader = FileSystemLoader('./templates/exercise6/')
+env.loader = FileSystemLoader("./templates/exercise6/")
 
 j2_vars = {
     "ntp1": "130.126.24.24",
