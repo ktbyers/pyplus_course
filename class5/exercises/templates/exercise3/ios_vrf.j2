@@ -7,7 +7,7 @@ vrf definition {{ vrf_name }}
   route-target import {{ rd_number }}
  exit-address-family
  {%- endif %}
- {%- if ipv4_af is defined %}
+ {%- if ipv6_af is defined %}
  !
  address-family ipv6
   route-target export {{ rd_number }}
