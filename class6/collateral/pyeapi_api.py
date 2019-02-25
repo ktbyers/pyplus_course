@@ -39,5 +39,8 @@ True
 >>> vlan_cfg.set_name(227, "orange")
 True
 >>> vlan_cfg.getall()
-{'1': {'vlan_id': '1', 'name': 'default', 'state': 'active', 'trunk_groups': []}, '225': {'vlan_id': '225', 'name': 'blue', 'state': 'active', 'trunk_groups': []}, '226': {'vlan_id': '226', 'name': 'red', 'state': 'active', 'trunk_groups': []}, '227': {'vlan_id': '227', 'name': 'orange', 'state': 'active', 'trunk_groups': []}}
+{'1': {'vlan_id': '1', 'name': 'default', 'state': 'active', 'trunk_groups': []}, '225':
+{'vlan_id': '225', 'name': 'blue', 'state': 'active', 'trunk_groups': []}, '226':
+{'vlan_id': '226', 'name': 'red', 'state': 'active', 'trunk_groups': []}, '227':
+{'vlan_id': '227', 'name': 'orange', 'state': 'active', 'trunk_groups': []}}
 """
