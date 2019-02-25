@@ -4,7 +4,7 @@ from pprint import pprint
 from getpass import getpass
 
 from urllib3.exceptions import InsecureRequestWarning
-import ipdb     # noqa
+import ipdb  # noqa
 
 requests.packages.urllib3.disable_warnings(category=InsecureRequestWarning)
 
