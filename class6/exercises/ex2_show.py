@@ -15,12 +15,12 @@ device = pyeapi.client.Node(connection)
 output = device.enable("show ip arp")
 
 print()
-print("-" * 12)
-arp_list = output[0]['result']['ipV4Neighbors']
+print("-" * 40)
+arp_list = output[0]["result"]["ipV4Neighbors"]
 for arp_entry in arp_list:
-    mac_address = arp_entry['hwAddress']
-    ip_address = arp_entry['address']
-    print(f"{ip_address} --> {mac_address}")
+    mac_address = arp_entry["hwAddress"]
+    ip_address = arp_entry["address"]
+    print("{:^15}{:^5}{:^15}".format(ip_address, "-->", mac_address))
 
-print("-" * 12)
+print("-" * 40)
 print()
