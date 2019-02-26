@@ -5,7 +5,7 @@ from getpass import getpass
 
 def yaml_load_devices(filename="arista_devices.yml"):
     with open(filename, "r") as f:
-        return yaml.load(f)
+        return yaml.safe_load(f)
     raise ValueError("Reading YAML file failed")
 
 
