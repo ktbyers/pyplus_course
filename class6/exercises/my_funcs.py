@@ -9,10 +9,10 @@ def yaml_load_devices(filename="arista_devices.yml"):
 
 def output_printer(arp_list):
     print()
-    print("-" * 40) 
+    print("-" * 40)
     for arp_entry in arp_list:
         mac_address = arp_entry["hwAddress"]
         ip_address = arp_entry["address"]
         print("{:^15}{:^5}{:^15}".format(ip_address, "-->", mac_address))
-    print("-" * 40) 
+    print("-" * 40)
     print()
