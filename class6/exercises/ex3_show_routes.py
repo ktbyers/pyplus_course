@@ -1,13 +1,11 @@
 import pyeapi
-import yaml
 from getpass import getpass
-
+from my_funcs import yaml_load_devices
 
 if __name__ == "__main__":
     password = getpass()
 
-    with open("arista_devices.yml", "r") as f:
-        devices = yaml.load(f)
+    devices = yaml_load_devices()
 
     for name, device_dict in devices.items():
         device_dict["password"] = password
