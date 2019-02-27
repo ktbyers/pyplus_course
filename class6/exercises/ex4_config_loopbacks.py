@@ -1,7 +1,3 @@
-"""
-interface Loopback99
-   ip address 172.31.1.253/30
-"""
 import pyeapi
 from jinja2 import FileSystemLoader, StrictUndefined
 from jinja2.environment import Environment
@@ -17,7 +13,7 @@ if __name__ == "__main__":
     template_file = "loopback_intf.j2"
 
     yaml_out = yaml_load_devices("arista_devices_full.yml")
-    my_devices = yaml_out['my_devices']
+    my_devices = yaml_out["my_devices"]
 
     eapi_devices = []
     for device_name in my_devices:
@@ -42,7 +38,7 @@ if __name__ == "__main__":
     for device_obj in eapi_devices:
         output = device_obj.enable("show ip interface brief")
         print()
-        print('-' * 50)
-        print(output[0]['result']['output'].rstrip())
-        print('-' * 50)
+        print("-" * 50)
+        print(output[0]["result"]["output"].rstrip())
+        print("-" * 50)
     print()
