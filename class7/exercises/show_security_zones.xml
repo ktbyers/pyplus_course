@@ -1,0 +1,33 @@
+<security>
+    <zones>
+        <security-zone>
+            <name>trust</name>
+            <host-inbound-traffic>
+                <system-services>
+                    <name>all</name>
+                </system-services>
+                <protocols>
+                    <name>all</name>
+                </protocols>
+            </host-inbound-traffic>
+            <interfaces>
+                <name>vlan.0</name>
+            </interfaces>
+        </security-zone>
+        <security-zone>
+            <name>untrust</name>
+            <screen>untrust-screen</screen>
+            <interfaces>
+                <name>fe-0/0/0.0</name>
+                <host-inbound-traffic>
+                    <system-services>
+                        <name>dhcp</name>
+                    </system-services>
+                    <system-services>
+                        <name>tftp</name>
+                    </system-services>
+                </host-inbound-traffic>
+            </interfaces>
+        </security-zone>
+    </zones>
+</security>
