@@ -48,7 +48,7 @@ print(show_security_zones.getchildren()[0].tag)
 print("\n\n")
 print("Create 'trust_zone' variable and print text of the 'name' child tag")
 print("-" * 20)
-trust_zone = show_security_zones[0][0]
+trust_zone = show_security_zones[0]
 print(f"Security zone: {trust_zone[0].text}")
 
 # Exercise 1f
@@ -57,3 +57,4 @@ print("All children of the 'trust_zone'")
 print("-" * 20)
 for child in trust_zone:
     print(child.tag)
+print("\n\n")
