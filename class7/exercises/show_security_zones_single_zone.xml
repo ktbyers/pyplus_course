@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<security>
+	<zones>
+		<security-zone>
+			<name>trust</name>
+			<host-inbound-traffic>
+				<system-services>
+					<name>all</name>
+				</system-services>
+				<protocols>
+					<name>all</name>
+				</protocols>
+			</host-inbound-traffic>
+			<interfaces>
+				<name>vlan.0</name>
+			</interfaces>
+		</security-zone>
+	</zones>
+</security>

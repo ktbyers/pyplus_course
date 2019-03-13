@@ -1,0 +1,11 @@
+<zones-information>
+    <zones-security>
+        <zones-security-zonename>trust</zones-security-zonename>
+        <zones-security-send-reset>Off</zones-security-send-reset>
+        <zones-security-policy-configurable>Yes</zones-security-policy-configurable>
+        <zones-security-interfaces-bound>1</zones-security-interfaces-bound>
+        <zones-security-interfaces>
+            <zones-security-interface-name>vlan.0</zones-security-interface-name>
+        </zones-security-interfaces>
+    </zones-security>
+</zones-information>
