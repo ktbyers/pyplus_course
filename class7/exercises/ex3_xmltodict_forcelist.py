@@ -1,6 +1,7 @@
 from __future__ import unicode_literals, print_function
 import xmltodict
 
+
 def read_xml_forcelist(filename, force_list=None):
     if force_list is None:
         force_list = {}
@@ -35,6 +36,8 @@ if __name__ == "__main__":
     print("Type of 'zones-security' in the single-zone XML file using force_list:")
     print("-" * 20)
     filename = "show_security_zones_trust.xml"
-    show_security_zones_single = read_xml_forcelist(filename, force_list={"zones-security": True})
+    show_security_zones_single = read_xml_forcelist(
+        filename, force_list={"zones-security": True}
+    )
     print(type(show_security_zones_single["zones-information"]["zones-security"]))
     print("\n\n")
