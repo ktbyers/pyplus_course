@@ -16,7 +16,7 @@ if __name__ == "__main__":
     print("-" * 20)
     first_zone = show_security_zones.find("./zones-security")
     print(first_zone.tag)
-    
+
     print()
     print("Find the tag of all the child elements of the first security-zone")
     print("-" * 20)
