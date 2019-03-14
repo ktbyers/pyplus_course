@@ -1,6 +1,5 @@
 from __future__ import unicode_literals, print_function
 from lxml import etree
-from pprint import pprint
 
 
 def read_xml(filename):

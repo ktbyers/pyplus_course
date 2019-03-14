@@ -1,6 +1,4 @@
-# Python2/3 Compatibility
 from __future__ import unicode_literals, print_function
-from pprint import pprint
 from getpass import getpass
 from nxapi_plumbing import Device
 
