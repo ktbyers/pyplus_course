@@ -1,7 +1,6 @@
 import ipdb
 from ncclient import manager
 from getpass import getpass
-from ncclient.xml_ import new_ele
 
 conn = manager.connect(
     host="srx2.lasthop.io",
