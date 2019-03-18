@@ -1,0 +1,10 @@
+<configuration>
+        <routing-options>
+            <static>
+                <route>
+                    <name>1.1.4.0/24</name>
+                    <next-hop>10.220.88.1</next-hop>
+                </route>
+            </static>
+        </routing-options>
+</configuration>
