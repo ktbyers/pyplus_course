@@ -16,6 +16,5 @@ a_device.open()
 # print(etree.tostring(xml_out, encoding="unicode"))
 
 # get_lldp_neighbors_information()
-#xml_out = a_device.rpc.get_lldp_neighbors_information()
-xml_out = a_device.rpc.get_zones_information()
+xml_out = a_device.rpc.get_lldp_neighbors_information()
 print(etree.tostring(xml_out, encoding="unicode"))
