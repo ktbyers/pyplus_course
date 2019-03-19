@@ -4,7 +4,17 @@ import sys
 from jnpr.junos import Device
 from jnpr.junos.op.routes import RouteTable
 from jnpr.junos.op.arp import ArpTable
+
 from lesson2_devices import junos_devices
+
+
+def check_connected(device):
+    if dev.connected:
+        print(f"Device {dev.hostname} is connected!")
+    else:
+        print(f"Device {dev.hostname} failed to connect :(.")
+        # If device is *not* connected; exit script
+        sys.exit(1)
 
 
 def gather_routes(device):
@@ -29,7 +39,8 @@ def print_beautiful_output(device_info):
     print()
     print("Print out desired output from device, route, and arp information")
     print("-" * 20)
-    for dev in list(device_info):
+    #for dev in list(device_info):
+    for dev in device_info:
         # Create device dictionary and assign desired values
         device = {}
         device["hostname"] = dev[0].hostname
@@ -40,30 +51,25 @@ def print_beautiful_output(device_info):
         # Pretty print device dictionary
         pprint(device)
 
-def check_connected(device):
-    if dev.connected:
-        print(f"Device {dev.hostname} is connected!")
-    else:
-        print(f"Device {dev.hostname} failed to connect :(.")
-        # If device is *not* connected; exit script
-        sys.exit(1)
 
 if __name__ == "__main__":
 
-    juniper_conns = []
+    devices = []
     for dev in junos_devices:
         dev = Device(**dev)
         dev.open()
-        juniper_conns.append(dev)
+        devices.append(dev)
 
     routes = []
     arps = []
-    for dev in juniper_conns:
+    for dev in devices:
         check_connected(dev)
         routes.append(gather_routes(dev))
         arps.append(gather_arps(dev))
 
     # Zip devices, routes, and arps together
-    device_info = zip(juniper_conns, routes, arps)
+    device_info = zip(devices, routes, arps)
+    import pdb
+    pdb.set_trace()
     # Pass zipped data to print function for parsing
     print_beautiful_output(device_info)
