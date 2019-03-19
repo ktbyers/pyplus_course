@@ -47,7 +47,7 @@ def cleanup_routes(dev):
     )
     print()
     print("Cleaning up routes that were added in this exercise.")
-    print("-" * 20)
+    print("\n\n")
     if cfg.diff() is not None:
         cfg.commit()
     cfg.unlock()
