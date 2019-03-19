@@ -1,7 +1,6 @@
 from jnpr.junos import Device
 from jnpr.junos.exception import LockError
 from jnpr.junos.utils.config import Config
-
 from jnpr_devices import srx2
 
 
