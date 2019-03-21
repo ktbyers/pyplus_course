@@ -4,4 +4,3 @@ interface loopback102
 interface loopback103
  description loopback103
 !
-end
