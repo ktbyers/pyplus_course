@@ -29,6 +29,4 @@ if __name__ == "__main__":
     # device.discard_config()
     # device.commit_config()
     # device.rollback()
-    import ipdb
-    ipdb.set_trace()
     hit_enter()
