@@ -1120,6 +1120,10 @@ interface Ethernet4/48
   !#logging event port link-status default
   !#logging event port trunk-status default
   mac-address 000c.29d1.d56b
+
+interface loopback 99
+  description Loopback
+
 line console
 line vty
 boot kickstart bootflash://sup-1/titanium-d1-kickstart.7.3.1.D1.0.10.bin
