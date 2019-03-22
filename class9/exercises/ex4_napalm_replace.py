@@ -32,3 +32,4 @@ if __name__ == "__main__":
     print(conn.compare_config())
     print(">" * 8)
     print("\n\n")
+    conn.close()

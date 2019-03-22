@@ -31,4 +31,6 @@ if __name__ == "__main__":
         pprint("{} facts:".format(conn.platform))
         pprint(conn.get_facts())
         print("-" * 6)
+        # Close the NAPALM connection
+        conn.close()
     print("\n\n")

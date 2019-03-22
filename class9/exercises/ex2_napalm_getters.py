@@ -37,4 +37,6 @@ if __name__ == "__main__":
     print("-" * 20)
     for conn in connections:
         create_backup(conn)
+        # Close the NAPALM connection
+        conn.close()
     print("\n\n")
