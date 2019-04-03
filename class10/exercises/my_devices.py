@@ -19,6 +19,14 @@ arista1 = {
     "global_delay_factor": 4,
 }
 
+arista2 = {
+    "host": "arista2.lasthop.io",
+    "username": username,
+    "password": password,
+    "device_type": "arista_eos",
+    "global_delay_factor": 4,
+}
+
 srx2 = {
     "host": "srx2.lasthop.io",
     "username": username,
@@ -26,4 +34,4 @@ srx2 = {
     "device_type": "juniper_junos",
 }
 
-network_devices = [cisco3, arista1, srx2]
+network_devices = [cisco3, arista1, arista2, srx2]
