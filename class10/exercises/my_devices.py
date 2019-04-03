@@ -16,6 +16,7 @@ arista1 = {
     "username": username,
     "password": password,
     "device_type": "arista_eos",
+    "global_delay_factor": 4,
 }
 
 srx2 = {

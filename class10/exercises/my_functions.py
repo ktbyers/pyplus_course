@@ -15,6 +15,14 @@ def ssh_command(device, command):
     return
 
 
+def ssh_command2(device, command):
+    """Establish an SSH connection. Execute show command, return results."""
+    device = ConnectHandler(**device)
+    output = device.send_command(command)
+    device.disconnect()
+    return output
+
+
 def show_version(device):
     """
     Create netmiko device and execute show version
