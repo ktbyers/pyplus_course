@@ -12,7 +12,7 @@ def netmiko_conn(request):
         device_type="cisco_ios",
         username="pyclass",
         password=password,
-    )   
+    )
 
     def fin():
         net_connect.disconnect()
