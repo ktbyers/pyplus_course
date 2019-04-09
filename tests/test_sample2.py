@@ -11,4 +11,4 @@ def test_answer2():
 
 
 def test_answer3():
-    assert increment(1) == 7
+    assert increment(1) == 2
