@@ -4,6 +4,7 @@ from netmiko import ConnectHandler
 
 password = getpass()
 
+
 # @pytest.fixture
 @pytest.fixture(scope="module")
 def netmiko_conn():
