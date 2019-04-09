@@ -9,3 +9,5 @@ install:
 # command to run tests
 script:
   - pylama .
+  - black --check .
+  - py.test -s -v tests/
