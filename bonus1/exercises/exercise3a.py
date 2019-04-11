@@ -24,7 +24,6 @@ def main():
 
     # Get the JSON results key from our query
     results = resp.json()["results"]
-    pprint(results)
 
     # Create a list of all our devices with their friendly "display_name"
     devices = []
@@ -32,7 +31,7 @@ def main():
         devices.append(dev["display_name"])
 
     # Or if you prefer list-comprehensions
-    devices = [dev["display_name"] for dev in results]
+    # devices = [dev["display_name"] for dev in results]
 
     print()
     print(devices)
