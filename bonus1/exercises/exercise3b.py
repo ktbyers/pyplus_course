@@ -1,5 +1,4 @@
 import os
-from pprint import pprint
 import requests
 
 from urllib3.exceptions import InsecureRequestWarning
