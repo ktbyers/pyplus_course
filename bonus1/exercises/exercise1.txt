@@ -1,0 +1,8 @@
+# 1a. Top level endpoint; no auth required
+curl -s https://netbox.lasthop.io/api/ --insecure | jq
+
+# 1b. Access /dcim/devices; Requires token auth
+curl -H "Authorization: Token $NETBOX_TOKEN" https://netbox.lasthop.io/api/dcim/devices/ --insecure | jq
+
+# 1c. Det specific device from devices list
+curl -H "Authorization: Token $NETBOX_TOKEN" https://netbox.lasthop.io/api/dcim/devices/2/ --insecure | jq
