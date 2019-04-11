@@ -46,9 +46,7 @@ def main():
 
     # New URL specific to our new IP address object
     url = f"{BASE_URL}ipam/ip-addresses/{address_id}/"
-    resp = requests.get(
-        url, headers=http_headers, verify=False
-    )
+    resp = requests.get(url, headers=http_headers, verify=False)
     print("-" * 12)
     pprint(resp.json())
 
