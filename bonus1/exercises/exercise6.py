@@ -8,7 +8,7 @@ requests.packages.urllib3.disable_warnings(category=InsecureRequestWarning)
 
 # Constants
 BASE_URL = "https://netbox.lasthop.io/api/"
-MY_IP_ID = "50"
+MY_IP_ID = "51"
 
 
 def main():
