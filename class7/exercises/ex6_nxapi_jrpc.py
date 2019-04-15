@@ -20,9 +20,9 @@ device = Device(
 )
 
 print("\n\n")
-print("Gather and print Ethernet2/1 data:")
+print("Gather and print Ethernet1/1 data:")
 print("-" * 20)
-intf_output = device.show("show interface Ethernet2/1")
+intf_output = device.show("show interface Ethernet1/1")
 intf_output = intf_output["TABLE_interface"]["ROW_interface"]
 print("Interface: {interface}; State: {state}; MTU: {eth_mtu}".format(**intf_output))
 print("\n\n")

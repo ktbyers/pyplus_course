@@ -23,9 +23,9 @@ device = Device(
 
 # Exercise 7a
 print("\n\n")
-print("Gather and print Ethernet2/1 Data")
+print("Gather and print Ethernet1/1 Data")
 print("-" * 20)
-intf_output = device.show("show interface Ethernet2/1")
+intf_output = device.show("show interface Ethernet1/1")
 print(
     "Interface: {}; State: {}; MTU: {}".format(
         intf_output.find(".//interface").text,
