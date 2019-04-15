@@ -13,7 +13,7 @@ if __name__ == "__main__":
     env.loader = FileSystemLoader("./templates/exercise2")
 
     template_file = "nxos_intf_bgp.j2"
-    interface = "Ethernet2/1"
+    interface = "Ethernet1/1"
 
     nxos1_vars = {
         "device_name": "nxos1",

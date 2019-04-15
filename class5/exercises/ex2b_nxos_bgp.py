@@ -4,7 +4,7 @@ from jinja2.environment import Environment
 env = Environment(undefined=StrictUndefined)
 env.loader = FileSystemLoader("./templates/exercise2")
 
-interface = "Ethernet2/1"
+interface = "Ethernet1/1"
 
 nxos1 = {
     "device_name": "nxos1",

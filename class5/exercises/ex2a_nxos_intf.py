@@ -4,7 +4,7 @@ from jinja2.environment import Environment
 env = Environment(undefined=StrictUndefined)
 env.loader = FileSystemLoader("./templates/exercise2")
 
-interface = "Ethernet2/1"
+interface = "Ethernet1/1"
 nxos1 = {"interface": interface, "ipv4_address": "10.1.100.1", "ipv4_netmask": "24"}
 nxos2 = {"interface": interface, "ipv4_address": "10.1.100.2", "ipv4_netmask": "24"}
 
