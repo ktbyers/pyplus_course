@@ -1,33 +1,90 @@
+
 !Command: Checkpoint cmd vdc 1
-!Time: Wed Aug  2 19:00:51 2017
+!Time: Mon Apr 15 20:53:52 2019
 
-version 7.3(1)D1(1)
-power redundancy-mode redundant
-license grace-period
-
+version 9.2(3) Bios:version  
 hostname nxos1
+class-map type network-qos c-nq1
+  description Default class on qos-group 1
+  match qos-group 1
+class-map type network-qos c-nq2
+  description Default class on qos-group 2
+  match qos-group 2
+class-map type network-qos c-nq3
+  description Default class on qos-group 3
+  match qos-group 3
+class-map type network-qos c-8q-nq1
+  description Default class on qos-group 1
+  match qos-group 1
+class-map type network-qos c-8q-nq2
+  description Default class on qos-group 2
+  match qos-group 2
+class-map type network-qos c-8q-nq3
+  description Default class on qos-group 3
+  match qos-group 3
+class-map type network-qos c-8q-nq4
+  description Default class on qos-group 4
+  match qos-group 4
+class-map type network-qos c-8q-nq5
+  description Default class on qos-group 5
+  match qos-group 5
+class-map type network-qos c-8q-nq6
+  description Default class on qos-group 6
+  match qos-group 6
+class-map type network-qos c-8q-nq7
+  description Default class on qos-group 7
+  match qos-group 7
+class-map type network-qos c-nq-default
+  description Default class on qos-group 0
+  match qos-group 0
+class-map type network-qos c-8q-nq-default
+  description Default class on qos-group 0
+  match qos-group 0
+policy-map type network-qos default-nq-policy
+  class type network-qos c-nq3
+    mtu 1500
+  class type network-qos c-nq2
+    mtu 1500
+  class type network-qos c-nq1
+    mtu 1500
+  class type network-qos c-nq-default
+    mtu 1500
+policy-map type network-qos default-8q-nq-policy
+  class type network-qos c-8q-nq7
+    mtu 1500
+  class type network-qos c-8q-nq6
+    mtu 1500
+  class type network-qos c-8q-nq5
+    mtu 1500
+  class type network-qos c-8q-nq4
+    mtu 1500
+  class type network-qos c-8q-nq3
+    mtu 1500
+  class type network-qos c-8q-nq2
+    mtu 1500
+  class type network-qos c-8q-nq1
+    mtu 1500
+  class type network-qos c-8q-nq-default
+    mtu 1500
 vdc nxos1 id 1
-  limit-resource module-type m1 m1xl m2xl f2e 
-  allocate interface Ethernet2/1-48
-  allocate interface Ethernet3/1-48
-  allocate interface Ethernet4/1-48
   limit-resource vlan minimum 16 maximum 4094
   limit-resource vrf minimum 2 maximum 4096
-  limit-resource port-channel minimum 0 maximum 768
-  limit-resource u4route-mem minimum 96 maximum 96
-  limit-resource u6route-mem minimum 24 maximum 24
+  limit-resource port-channel minimum 0 maximum 511
+  limit-resource u4route-mem minimum 128 maximum 128
+  limit-resource u6route-mem minimum 96 maximum 96
   limit-resource m4route-mem minimum 58 maximum 58
   limit-resource m6route-mem minimum 8 maximum 8
 
-feature scp-server
 !#feature ssh
+!#ssh key rsa 1024
+feature nxapi
+feature scp-server
 cfs eth distribute
 feature bgp
 feature interface-vlan
 feature hsrp
 feature vpc
 feature lldp
-feature nxapi
 
 role name priv-15
   description This is a system defined privilege role.
@@ -73,1066 +130,659 @@ role name priv-0
   rule 3 permit command ssh *
   rule 2 permit command enable *
   rule 1 permit read  
-username admin password 5 $5$aH4ttsPk$kNH7qXBaegskBUekuymPzaL5Q0Vh/mQVSdw4tQ0AcU7  role network-admin
-username pyclass password 5 $5$s/xVo50b$OpZJ5IqqRQUC9chXNM4G8FdDzblBOFmFfdPDrW7Pvx0  role network-admin
-username pyclass passphrase  lifetime 99999 warntime 14 gracetime 3
 no password strength-check
+username admin password 5 $5$/.ErG6en$vIpgmSARIqTv9N7btcIi2Ie9gdJvIAPKtecRH/a14YB  role network-admin
+username pyclass password 5 $5$/SRuQL7G$xw4WMR3jIUzqHAZs7FWuIbqJMIAjV7UU5w8XawKHl.1  role network-admin
+username pyclass passphrase  lifetime 99999 warntime 14 gracetime 3
 ip domain-lookup
-ip domain-name twb-tech.com
+ip domain-name lasthop.io
 ip name-server 8.8.8.8 8.8.4.4
-vlan dot1Q tag native
-system default switchport
-system jumbomtu 0
+ip name-server 10.0.2.3 use-vrf management
+no system default switchport
 no logging event trunk-status enable
+vlan dot1Q tag native
+!# qos statistics
+!# class-map type queuing match-any c-out-q3
+  !# match qos-group 3
+!# class-map type queuing match-any c-out-q2
+  !# match qos-group 2
+!# class-map type queuing match-any c-out-q1
+  !# match qos-group 1
+!# class-map type queuing match-any c-out-q-default
+  !# match qos-group 0
+!# class-map type queuing match-any c-out-8q-q7
+  !# match qos-group 7
+!# class-map type queuing match-any c-out-8q-q6
+  !# match qos-group 6
+!# class-map type queuing match-any c-out-8q-q5
+  !# match qos-group 5
+!# class-map type queuing match-any c-out-8q-q4
+  !# match qos-group 4
+!# class-map type queuing match-any c-out-8q-q3
+  !# match qos-group 3
+!# class-map type queuing match-any c-out-8q-q2
+  !# match qos-group 2
+!# class-map type queuing match-any c-out-8q-q1
+  !# match qos-group 1
+!# class-map type queuing match-any c-out-8q-q-default
+  !# match qos-group 0
+!# class-map type queuing match-any c-in-q7
+  !# match qos-group 7
+!# class-map type queuing match-any c-in-q6
+  !# match qos-group 6
+!# class-map type queuing match-any c-in-q5
+  !# match qos-group 5
+!# class-map type queuing match-any c-in-q4
+  !# match qos-group 4
+!# class-map type queuing match-any c-in-q3
+  !# match qos-group 3
+!# class-map type queuing match-any c-in-q2
+  !# match qos-group 2
+!# class-map type queuing match-any c-in-q1
+  !# match qos-group 1
+!# class-map type queuing match-any c-in-q-default
+  !# match qos-group 0
+policy-map type queuing default-out-policy
+  class type queuing c-out-q3
+    priority level 1
+  class type queuing c-out-q2
+    bandwidth remaining percent 0
+  class type queuing c-out-q1
+    bandwidth remaining percent 0
+  class type queuing c-out-q-default
+    bandwidth remaining percent 100
+policy-map type queuing default-8q-out-policy
+  class type queuing c-out-8q-q7
+    priority level 1
+  class type queuing c-out-8q-q6
+    bandwidth remaining percent 0
+  class type queuing c-out-8q-q5
+    bandwidth remaining percent 0
+  class type queuing c-out-8q-q4
+    bandwidth remaining percent 0
+  class type queuing c-out-8q-q3
+    bandwidth remaining percent 0
+  class type queuing c-out-8q-q2
+    bandwidth remaining percent 0
+  class type queuing c-out-8q-q1
+    bandwidth remaining percent 0
+  class type queuing c-out-8q-q-default
+    bandwidth remaining percent 100
 copp profile strict
+no system mode maintenance
 snmp-server contact Kirk Byers
 snmp-server location Freemont, CA (not really)
-snmp-server user admin network-operator auth md5 0xe341f4e37eeb34c9ac0a5a7ffbdf6ac5 priv 0xe341f4e37eeb34c9ac0a5a7ffbdf6ac5 localizedkey
+snmp-server user admin network-admin auth md5 0x9915eb9e8b3d04fdddad4cc3f0739a21 priv 0x9915eb9e8b3d04fdddad4cc3f0739a21 localizedkey
 snmp-server user pyclass network-admin auth md5 0xb4a54cca3ed197cdd5af29aab83b42a7 priv 0xb4a54cca3ed197cdd5af29aab83b42a7 localizedkey
 snmp-server user admin auth md5 0x9e902c388e9b4c616e7c7c98d1079325 priv 0x9e902c388e9b4c616e7c7c98d1079325 localizedkey engineID 128:0:0:9:3:0:12:41:209:213:60
+snmp-server user admin auth md5 0x7357a55b9d35915f72b73fd96443c302 priv 0x7357a55b9d35915f72b73fd96443c302 localizedkey engineID 128:0:0:9:3:0:170:204:136:230:0
 rmon event 1 log description FATAL(1) owner PMON@FATAL
 rmon event 2 log description CRITICAL(2) owner PMON@CRITICAL
 rmon event 3 log description ERROR(3) owner PMON@ERROR
 rmon event 4 log description WARNING(4) owner PMON@WARNING
 rmon event 5 log description INFORMATION(5) owner PMON@INFO
-snmp-server enable traps link
+snmp-server enable traps link cisco-xcvr-mon-status-chg
 callhome
   !#destination-profile CiscoTAC-1 message-level 0
+  !#destination-profile CiscoTAC-1 message-size 5000000
   !#destination-profile full_txt message-level 0
+  !#destination-profile full_txt message-size 2500000
   !#destination-profile short_txt message-level 0
-ntp server 130.126.24.24
-ntp server 152.2.21.1
+  !#destination-profile short_txt message-size 4000
+  !#periodic-inventory notification interval 7
+  !#periodic-inventory notification timeofday 08:00
+ntp server 130.126.24.24 use-vrf management
+ntp server 152.2.21.1 use-vrf default
 
 vlan 1
+vlan 2
+vlan 3
+vlan 4
 vrf context management
-  ip route 0.0.0.0/0 10.0.0.2
+  ip route 0.0.0.0/0 10.0.2.2
+no nxapi http
+nxapi https port 8443
+no nxapi ssl ciphers weak
+nxapi ssl protocols TLSv1.1 TLSv1.2
 
-interface mgmt0
-  vrf member management
-  ip address 10.0.0.71/24
 
 interface Vlan1
 
-interface Ethernet2/1
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
+interface Ethernet1/1
+  !#no switchport
+  mac-address 000c.29d1.0001
   no shutdown
 
-interface Ethernet2/2
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
+interface Ethernet1/2
+  !#no switchport
+  mac-address 000c.29d1.0002
   no shutdown
 
-interface Ethernet2/3
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
+interface Ethernet1/3
+  !#no switchport
+  mac-address 000c.29d1.0003
   no shutdown
 
-interface Ethernet2/4
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
+interface Ethernet1/4
+  !#no switchport
+  mac-address 000c.29d1.0004
   no shutdown
 
-interface Ethernet2/5
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
+interface Ethernet1/5
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/6
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/7
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/8
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/9
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/10
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/11
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/12
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/13
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/14
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/15
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/16
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/17
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/18
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/19
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/20
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/21
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/22
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/23
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/24
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/25
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/26
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/27
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/28
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/29
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/30
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/31
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/32
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/33
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/34
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/35
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/36
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/37
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/38
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/39
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/40
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/41
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/42
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/43
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/44
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/45
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/46
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/47
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/48
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/49
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/50
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/51
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/52
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/53
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/54
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/55
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/56
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/57
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/58
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/59
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/60
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/61
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/62
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/63
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/64
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/65
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/66
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/67
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/68
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/69
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/70
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/71
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/72
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/73
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/74
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/75
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/76
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/77
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/78
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/79
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/80
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/81
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/82
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/83
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/84
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/85
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/86
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/87
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/88
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/89
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/90
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/91
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/92
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/93
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/94
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/95
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/96
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/97
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/98
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/99
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/100
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/101
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/102
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/103
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/104
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/105
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/106
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/107
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/108
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/109
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/110
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/111
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/112
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/113
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/114
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/115
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/116
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/117
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/118
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/119
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/120
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/121
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/122
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/123
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/124
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/125
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/126
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/127
+  !#shutdown
+  !#no switchport
+
+interface Ethernet1/128
+  !#shutdown
+  !#no switchport
+
+interface mgmt0
+  ip address dhcp
+  vrf member management
+
+interface loopback99
+  description Test Loopback
   no shutdown
-
-interface Ethernet2/6
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-  no shutdown
-
-interface Ethernet2/7
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet2/8
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet2/9
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet2/10
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet2/11
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet2/12
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet2/13
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet2/14
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet2/15
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet2/16
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet2/17
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet2/18
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet2/19
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet2/20
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet2/21
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet2/22
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet2/23
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet2/24
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet2/25
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet2/26
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet2/27
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet2/28
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet2/29
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet2/30
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet2/31
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet2/32
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet2/33
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet2/34
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet2/35
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet2/36
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet2/37
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet2/38
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet2/39
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet2/40
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet2/41
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet2/42
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet2/43
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet2/44
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet2/45
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet2/46
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet2/47
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet2/48
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet3/1
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet3/2
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet3/3
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet3/4
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet3/5
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet3/6
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet3/7
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet3/8
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet3/9
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet3/10
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet3/11
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet3/12
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet3/13
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet3/14
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet3/15
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet3/16
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet3/17
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet3/18
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet3/19
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet3/20
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet3/21
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet3/22
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet3/23
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet3/24
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet3/25
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet3/26
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet3/27
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet3/28
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet3/29
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet3/30
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet3/31
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet3/32
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet3/33
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet3/34
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet3/35
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet3/36
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet3/37
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet3/38
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet3/39
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet3/40
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet3/41
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet3/42
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet3/43
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet3/44
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet3/45
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet3/46
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet3/47
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet3/48
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet4/1
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet4/2
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet4/3
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet4/4
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet4/5
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet4/6
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet4/7
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet4/8
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet4/9
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet4/10
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet4/11
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet4/12
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet4/13
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet4/14
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet4/15
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet4/16
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet4/17
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet4/18
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet4/19
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet4/20
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet4/21
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet4/22
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet4/23
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet4/24
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet4/25
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet4/26
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet4/27
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet4/28
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet4/29
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet4/30
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet4/31
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet4/32
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet4/33
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet4/34
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet4/35
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet4/36
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet4/37
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet4/38
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet4/39
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet4/40
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet4/41
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet4/42
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet4/43
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet4/44
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet4/45
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet4/46
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet4/47
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface Ethernet4/48
-  shutdown
-  no switchport
-  !#logging event port link-status default
-  !#logging event port trunk-status default
-  mac-address 000c.29d1.d56b
-
-interface loopback 99
-  description Loopback
-
+cli alias name wr copy run start
 line console
 line vty
-boot kickstart bootflash://sup-1/titanium-d1-kickstart.7.3.1.D1.0.10.bin
-boot system bootflash://sup-1/titanium-d1.7.3.1.D1.0.10.bin 
+boot nxos bootflash:/nxos.9.2.3.bin 
 router bgp 22
-no system default switchport shutdown
-nxapi http port 80
-nxapi https port 8443
-nxapi sandbox
+xml server timeout 1200
+
+no priority-flow-control override-interface mode off
+
+!#logging logfile messages 5 size 4194304
 !#logging monitor
 !#logging module
 !#logging console
+
+
