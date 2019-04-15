@@ -24,7 +24,7 @@ cmds = ["show version"]
 output = device.show_list(cmds, raw_text=True)
 pprint(output)
 
-cfg_cmd = ["logging history size 300"]
+cfg_cmd = ["logging monitor 2"]
 output = device.config_list(cfg_cmd)
 print(output)
 

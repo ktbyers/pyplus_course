@@ -26,7 +26,7 @@ cmds = ["show version"]
 output = device.show_list(cmds, raw_text=True)
 print(etree.tostring(output[0]).decode())
 
-cfg_cmd = ["logging history size 200"]
+cfg_cmd = ["logging monitor 2"]
 output = device.config_list(cfg_cmd)
 print(etree.tostring(output[0]).decode())
 
