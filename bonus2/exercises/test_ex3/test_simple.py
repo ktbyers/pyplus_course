@@ -11,7 +11,7 @@ def my_mul(x, y):
 def test_my_add():
     """Simple test to test the "my_ad" function"""
     assert my_add(5, 11) == 16
-    assert my_add(1, 9) == 1
+    assert my_add(1, 9) == 10
 
 
 def test_my_mul():
