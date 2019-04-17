@@ -15,6 +15,7 @@ def netmiko_connect(request):
     }
 
     net_connect = ConnectHandler(**arista1)
+
     def fin():
         net_connect.disconnect()
 
