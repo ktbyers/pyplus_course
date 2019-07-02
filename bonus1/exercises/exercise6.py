@@ -8,7 +8,8 @@ requests.packages.urllib3.disable_warnings(category=InsecureRequestWarning)
 
 # Constants
 BASE_URL = "https://netbox.lasthop.io/api/"
-MY_IP_ID = "51"
+# MY_IP_ID = "51"
+ADDRESS_ID = input("Enter Address ID that was created in exercise4: ")
 
 
 def main():
@@ -25,7 +26,7 @@ def main():
     print()
     print("Deleting IP address object.")
     resp = requests.delete(
-        f"{BASE_URL}ipam/ip-addresses/{MY_IP_ID}/", headers=http_headers, verify=False
+        f"{BASE_URL}ipam/ip-addresses/{ADDRESS_ID}/", headers=http_headers, verify=False
     )
     print(f"Response code: {resp.status_code}")
     print()
