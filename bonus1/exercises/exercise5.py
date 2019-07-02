@@ -10,7 +10,8 @@ requests.packages.urllib3.disable_warnings(category=InsecureRequestWarning)
 
 # Constants, including ID from previously created object
 BASE_URL = "https://netbox.lasthop.io/api/"
-ADDRESS_ID = "51"
+# ADDRESS_ID = "51"
+ADDRESS_ID = input("Enter Address ID that was created in exercise4: ")
 
 
 def main():
