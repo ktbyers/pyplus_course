@@ -13,7 +13,10 @@ print(net_connect.find_prompt())
 
 command = "delete flash:/cisco_file.txt"
 output = net_connect.send_command(
-    command, expect_string=r"confirm", strip_prompt=False, strip_command=False
+    command, expect_string=r"Delete filename", strip_prompt=False, strip_command=False
+)
+output = net_connect.send_command(
+    "\n", expect_string=r"confirm", strip_prompt=False, strip_command=False
 )
 output = net_connect.send_command(
     "y", expect_string=r"#", strip_prompt=False, strip_command=False
