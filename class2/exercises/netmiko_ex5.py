@@ -30,4 +30,5 @@ if __name__ == "__main__":
         net_connect = ConnectHandler(**device)
         output = net_connect.send_config_from_file("vlans.txt")
         display_output(output)
+        net_connect.save_config()
         net_connect.disconnect()
