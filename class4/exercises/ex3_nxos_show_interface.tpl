@@ -11,4 +11,4 @@ Start
   ^admin state is ${ADMIN_STATE},
   ^  Hardware:.*address: ${MAC_ADDRESS}\s
   ^  MTU ${MTU} bytes
-  ^  $DUPLEX, $SPEED Mb/s -> Record
+  ^  ${DUPLEX}, ${SPEED} Mb/s -> Record
