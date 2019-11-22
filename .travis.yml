@@ -10,4 +10,5 @@ install:
 script:
   - pylama .
   - black --check .
-  - py.test -s -v tests/
+  - py.test -s -v tests/test_sample.py
+  - py.test -s -v tests/test_sample2.py

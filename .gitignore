@@ -104,3 +104,6 @@ venv.bak/
 .mypy_cache/
 
 *.swp
+class1/exercises/show_version.txt
+tests/my_session.txt
+tests/show_version.txt

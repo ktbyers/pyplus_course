@@ -1,8 +1,9 @@
-from netmiko import ConnectHandler
+import os
 from getpass import getpass
+from netmiko import ConnectHandler
 
 
-password = getpass()
+password = os.getenv("PYNET_PASSWORD") if os.getenv("PYNET_PASSWORD") else getpass()
 
 nxos1 = {
     "host": "nxos1.lasthop.io",
