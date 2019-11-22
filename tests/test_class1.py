@@ -3,10 +3,10 @@ import pytest
 import subprocess
 
 TEST_CASES_STDIN = [
-#    ("../day1/strings/solutions/exercise1.py", "Han Solo"),
-#    ("../day1/strings/solutions/exercise2.py", "172.16.21.10"),
-#    ("../day1/numbers/solutions/exercise1.py", "20\n8"),
-#    ("../day1/lists/solutions/exercise2.py", "172.16.21.10"),
+    #    ("../day1/strings/solutions/exercise1.py", "Han Solo"),
+    #    ("../day1/strings/solutions/exercise2.py", "172.16.21.10"),
+    #    ("../day1/numbers/solutions/exercise1.py", "20\n8"),
+    #    ("../day1/lists/solutions/exercise2.py", "172.16.21.10"),
 ]
 
 TEST_CASES = [
@@ -33,9 +33,9 @@ def subprocess_runner_stdin(cmd_list, stdin_response, exercise_dir):
         stdin=subprocess.PIPE,
         stderr=subprocess.PIPE,
         # Use line-buffering (send line when a newline is encountered)
-        bufsize=1,  
+        bufsize=1,
         # Input/output gets converted to/from text
-        universal_newlines=True,  
+        universal_newlines=True,
         cwd=exercise_dir,
     ) as proc:
         std_out, std_err = proc.communicate(input=stdin_response)
@@ -59,6 +59,8 @@ def test_runner_stdin(test_case, stdin_response):
     python_script = path_obj.name
     script_dir = path_obj.parents[0]
     cmd_list = ["python", python_script]
-    std_out, std_err, return_code = subprocess_runner_stdin(cmd_list, stdin_response, script_dir)
+    std_out, std_err, return_code = subprocess_runner_stdin(
+        cmd_list, stdin_response, script_dir
+    )
     assert return_code == 0
     assert std_err == ""
