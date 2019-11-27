@@ -9,7 +9,7 @@ if __name__ == "__main__":
     filename = path.join(home_dir, ".netmiko.yml")
 
     with open(filename) as f:
-        yaml_out = yaml.load(f)
+        yaml_out = yaml.safe_load(f)
 
     device = yaml_out["cisco4"]
     net_connect = ConnectHandler(**device)

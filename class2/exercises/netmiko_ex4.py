@@ -1,8 +1,9 @@
+import os
 from netmiko import ConnectHandler
 from getpass import getpass
 from datetime import datetime
 
-password = getpass()
+password = os.getenv("PYNET_PASSWORD") if os.getenv("PYNET_PASSWORD") else getpass()
 
 start_time = datetime.now()
 device = {

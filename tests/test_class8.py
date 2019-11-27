@@ -10,25 +10,12 @@ TEST_CASES_STDIN = [
 ]
 
 TEST_CASES = [
-    "../class2/exercises/netmiko_ex1a.py",
-    "../class2/exercises/netmiko_ex1b.py",
-    "../class2/exercises/netmiko_ex2.py",
-    "../class2/exercises/netmiko_ex3.py",
-    "../class2/exercises/netmiko_ex4.py",
-    "../class2/exercises/netmiko_ex5.py",
-    "../class2/exercises/netmiko_ex6.py",
-    #    "../class2/collateral/cfg_change_save.py",
-    #    "../class2/collateral/telnet_example.py",
-    #    "../class2/collateral/ssh_keys.py",
-    #    "../class2/collateral/cfg_change_file.py",
-    #    "../class2/collateral/fast_cli.py",
-    #    "../class2/collateral/global_delay.py",
-    #    "../class2/collateral/send_command_textfsm.py",
-    #    "../class2/collateral/cfg_change.py",
-    #    "../class2/collateral/ml_prompting_send_command.py",
-    #    "../class2/collateral/nm_file_transfer.py",
-    #    "../class2/collateral/delay_factor.py",
-    #    "../class2/collateral/ml_prompting_timing.py",
+    "../class8/exercises/ex1_jnpr_facts.py",
+    "../class8/exercises/ex2_jnpr_tables.py",
+    "../class8/exercises/ex3_jnpr_cfg.py",
+    "../class8/exercises/ex4_jnpr_cfg_routes.py",
+    "../class8/exercises/ex5_jnpr_rpc.py",
+    #    COLLATERAL
 ]
 
 

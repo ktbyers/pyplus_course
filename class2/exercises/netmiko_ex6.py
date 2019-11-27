@@ -1,8 +1,10 @@
+import os
 import time
 from getpass import getpass
 from netmiko import ConnectHandler
 
-password = getpass()
+password = os.getenv("PYNET_PASSWORD") if os.getenv("PYNET_PASSWORD") else getpass()
+
 device = {
     "host": "cisco4.lasthop.io",
     "username": "pyclass",

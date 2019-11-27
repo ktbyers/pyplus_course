@@ -1,3 +1,4 @@
+import os
 import pyeapi
 import yaml
 from getpass import getpass
@@ -12,7 +13,7 @@ def yaml_load_devices(filename="arista_devices.yml"):
 def main():
 
     devices = yaml_load_devices()
-    password = getpass()
+    password = os.getenv("PYNET_PASSWORD") if os.getenv("PYNET_PASSWORD") else getpass()
 
     for name, device_dict in devices.items():
         device_dict["password"] = password

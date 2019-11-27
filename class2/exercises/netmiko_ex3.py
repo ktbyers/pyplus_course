@@ -1,8 +1,9 @@
+import os
 from netmiko import ConnectHandler
 from getpass import getpass
 from pprint import pprint
 
-password = getpass()
+password = os.getenv("PYNET_PASSWORD") if os.getenv("PYNET_PASSWORD") else getpass()
 
 device = {
     "host": "cisco4.lasthop.io",

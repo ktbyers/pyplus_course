@@ -1,7 +1,9 @@
+import os
 import pyeapi
 from getpass import getpass
 
-password = getpass()
+password = os.getenv("PYNET_PASSWORD") if os.getenv("PYNET_PASSWORD") else getpass()
+
 arista8 = {
     "transport": "https",
     "host": "arista8.lasthop.io",

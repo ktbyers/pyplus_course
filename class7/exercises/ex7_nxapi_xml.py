@@ -1,4 +1,5 @@
 from __future__ import unicode_literals, print_function
+import os
 from getpass import getpass
 from lxml import etree
 from nxapi_plumbing import Device
@@ -9,13 +10,13 @@ from requests.packages.urllib3.exceptions import InsecureRequestWarning
 
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 
-
+password = os.getenv("PYNET_PASSWORD") if os.getenv("PYNET_PASSWORD") else getpass()
 # Create nxapi_plumbing Device object
 device = Device(
     api_format="xml",
     host="nxos1.lasthop.io",
     username="pyclass",
-    password=getpass(),
+    password=password,
     transport="https",
     port=8443,
     verify=False,

@@ -1,3 +1,4 @@
+import os
 from netmiko import ConnectHandler
 from getpass import getpass
 
@@ -12,7 +13,7 @@ def display_output(output):
 
 
 if __name__ == "__main__":
-    password = getpass()
+    password = os.getenv("PYNET_PASSWORD") if os.getenv("PYNET_PASSWORD") else getpass()
     nxos1 = {
         "host": "nxos1.lasthop.io",
         "username": "pyclass",

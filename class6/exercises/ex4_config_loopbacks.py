@@ -1,3 +1,4 @@
+import os
 import pyeapi
 from jinja2 import FileSystemLoader, StrictUndefined
 from jinja2.environment import Environment
@@ -6,7 +7,7 @@ from my_funcs import yaml_load_devices
 
 
 if __name__ == "__main__":
-    password = getpass()
+    password = os.getenv("PYNET_PASSWORD") if os.getenv("PYNET_PASSWORD") else getpass()
 
     env = Environment(undefined=StrictUndefined)
     env.loader = FileSystemLoader(".")

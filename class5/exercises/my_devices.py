@@ -1,6 +1,8 @@
+import os
 from getpass import getpass
 
-password = getpass()
+password = os.getenv("PYNET_PASSWORD") if os.getenv("PYNET_PASSWORD") else getpass()
+
 
 nxos1 = {
     "device_type": "cisco_nxos",

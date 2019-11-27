@@ -1,8 +1,9 @@
+import os
 from getpass import getpass
 
 
 username = "pyclass"
-password = getpass()
+password = os.getenv("PYNET_PASSWORD") if os.getenv("PYNET_PASSWORD") else getpass()
 
 cisco3 = {
     "host": "cisco3.lasthop.io",

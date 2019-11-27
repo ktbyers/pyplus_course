@@ -1,3 +1,4 @@
+import os
 import pyeapi
 from getpass import getpass
 from my_funcs import yaml_load_devices, output_printer
@@ -6,7 +7,7 @@ from my_funcs import yaml_load_devices, output_printer
 def main():
 
     devices = yaml_load_devices()
-    password = getpass()
+    password = os.getenv("PYNET_PASSWORD") if os.getenv("PYNET_PASSWORD") else getpass()
 
     for name, device_dict in devices.items():
         device_dict["password"] = password
