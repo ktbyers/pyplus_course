@@ -1,13 +1,14 @@
-from netmiko import ConnectHandler
+import os
 from getpass import getpass
+from netmiko import ConnectHandler
 
+password = os.getenv("PYNET_PASSWORD") if os.getenv("PYNET_PASSWORD") else getpass()
 device = {
     "device_type": "cisco_ios",
     "host": "cisco4.lasthop.io",
     "username": "pyclass",
-    "password": getpass(),
+    "password": password,
 }
-
 net_connect = ConnectHandler(**device)
 
 output = net_connect.send_command(
