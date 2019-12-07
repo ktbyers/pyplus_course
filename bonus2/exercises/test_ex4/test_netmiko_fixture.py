@@ -1,3 +1,4 @@
+import os
 import pytest
 from getpass import getpass
 from netmiko import ConnectHandler
@@ -7,11 +8,12 @@ from netmiko import ConnectHandler
 @pytest.fixture(scope="module")
 def netmiko_connect():
     """Connect to arista1 and return connection object"""
+    password = os.getenv("PYNET_PASSWORD") if os.getenv("PYNET_PASSWORD") else getpass()
     arista1 = {
         "device_type": "arista_eos",
         "host": "arista1.lasthop.io",
         "username": "pyclass",
-        "password": getpass(),
+        "password": password,
     }
     return ConnectHandler(**arista1)
 

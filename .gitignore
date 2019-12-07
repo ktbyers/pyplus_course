@@ -109,3 +109,6 @@ tests/my_session.txt
 tests/show_version.txt
 class1/collateral/my_session.txt
 class2/exercises/my_output.txt
+class9/exercises/arista1.lasthop.io-running.txt
+class9/exercises/cisco3.lasthop.io-running.txt
+class9/exercises/nxos1.lasthop.io-checkpoint.txt
