@@ -29,6 +29,7 @@ def test_runner(test_case):
     assert return_code == 0
     assert std_err == ""
 
+
 @pytest.mark.parametrize("linter,test_case,test_return_code", TEST_CASES_PYLINT)
 def test_runner_pylint(linter, test_case, test_return_code):
     path_obj = Path(test_case)
