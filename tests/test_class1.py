@@ -53,14 +53,14 @@ def test_runner(test_case):
     assert std_err == ""
 
 
-@pytest.mark.parametrize("test_case,stdin_response", TEST_CASES_STDIN)
-def test_runner_stdin(test_case, stdin_response):
-    path_obj = Path(test_case)
-    python_script = path_obj.name
-    script_dir = path_obj.parents[0]
-    cmd_list = ["python", python_script]
-    std_out, std_err, return_code = subprocess_runner_stdin(
-        cmd_list, stdin_response, script_dir
-    )
-    assert return_code == 0
-    assert std_err == ""
+# @pytest.mark.parametrize("test_case,stdin_response", TEST_CASES_STDIN)
+# def test_runner_stdin(test_case, stdin_response):
+#     path_obj = Path(test_case)
+#     python_script = path_obj.name
+#     script_dir = path_obj.parents[0]
+#     cmd_list = ["python", python_script]
+#     std_out, std_err, return_code = subprocess_runner_stdin(
+#         cmd_list, stdin_response, script_dir
+#     )
+#     assert return_code == 0
+#     assert std_err == ""
