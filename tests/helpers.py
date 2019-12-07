@@ -1,5 +1,6 @@
 import subprocess
 
+
 def subprocess_runner(cmd_list, exercise_dir):
     with subprocess.Popen(
         cmd_list, stdout=subprocess.PIPE, stderr=subprocess.PIPE, cwd=exercise_dir

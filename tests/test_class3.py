@@ -14,6 +14,7 @@ TEST_CASES = [
     #    COLLATERAL
 ]
 
+
 @pytest.mark.parametrize("test_case", TEST_CASES)
 def test_runner(test_case):
     path_obj = Path(test_case)
