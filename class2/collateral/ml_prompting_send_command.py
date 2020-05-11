@@ -11,6 +11,8 @@ device1 = {
 net_connect = ConnectHandler(**device1)
 print(net_connect.find_prompt())
 
+# Behavior depends upon the 'file prompt quiet' setting.
+# The below assumes 'no file prompt quiet' (i.e. that it is not configured).
 command = "delete flash:/cisco_file.txt"
 output = net_connect.send_command(
     command, expect_string=r"Delete filename", strip_prompt=False, strip_command=False
