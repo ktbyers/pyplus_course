@@ -83,7 +83,6 @@ if __name__ == "__main__":
         bgp_verify = f"show ip bgp summary | include {remote_ip}"
         output = net_connect.send_command(bgp_verify)
         # Retrieve the State/PfxRcd field which is the last field
-        bgp_pattern = r"\s+(\S+)\s*$"
         match = re.search(r"\s+(\S+)\s*$", output)
         prefix_received = match.group(1)
         try:
