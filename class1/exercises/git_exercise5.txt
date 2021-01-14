@@ -1,8 +1,8 @@
 
 # Files have been created, but not added to repository
 $ git status
-On branch master
-Your branch is up-to-date with 'origin/master'.
+On branch main
+Your branch is up-to-date with 'origin/main'.
 
 Untracked files:
   (use "git add <file>..." to include in what will be committed)
@@ -17,8 +17,8 @@ nothing added to commit but untracked files present (use "git add" to track)
 # Add files to the repository (staged, but not committed)
 $ git add *.py
 $ git status
-On branch master
-Your branch is up-to-date with 'origin/master'.
+On branch main 
+Your branch is up-to-date with 'origin/main'.
 
 Changes to be committed:
   (use "git reset HEAD <file>..." to unstage)
@@ -30,7 +30,7 @@ Changes to be committed:
 
 # Commit the files
 $ git commit -m "Adding three files into the repository"
-[master fdc6fff] Adding three files into the repository
+[main fdc6fff] Adding three files into the repository
  3 files changed, 6 insertions(+)
  create mode 100644 file1.py
  create mode 100644 file2.py
@@ -39,15 +39,15 @@ $ git commit -m "Adding three files into the repository"
 
 # Repository is clean now
 $ git status
-On branch master
-Your branch is ahead of 'origin/master' by 1 commit.
+On branch main
+Your branch is ahead of 'origin/main' by 1 commit.
   (use "git push" to publish your local commits)
 
 nothing to commit, working tree clean
 
 
 # Push files to GitHub
-$ git push origin master
+$ git push origin main
 Username for 'https://github.com': ktbyers
 Password for 'https://ktbyers@github.com': 
 Counting objects: 5, done.
@@ -55,6 +55,6 @@ Compressing objects: 100% (2/2), done.
 Writing objects: 100% (5/5), 528 bytes | 528.00 KiB/s, done.
 Total 5 (delta 0), reused 0 (delta 0)
 To https://github.com/ktbyers/pynetb
-   c3d1964..fdc6fff  master -> master
+   c3d1964..fdc6fff  main -> main
 
 

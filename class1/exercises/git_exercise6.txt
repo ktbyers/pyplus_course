@@ -1,13 +1,13 @@
 
 $ git branch
-* master
+* main
 
-$ git checkout -b test master
+$ git checkout -b test main
 Switched to a new branch 'test'
 
 # Branch 'test' now exists and is active
 $ git branch
-  master
+  main
 * test
 
 
@@ -52,7 +52,7 @@ Date:   Mon Oct 8 16:34:55 2018 -0700
 
     Adding two directories and two files
 
-commit fdc6fff4ec0a6a253292bf549a987057d04e37a9 (origin/master, origin/HEAD, master)
+commit fdc6fff4ec0a6a253292bf549a987057d04e37a9 (origin/main, origin/HEAD, main)
 Author: Kirk Byers <ktbyers@twb-tech.com>
 Date:   Mon Oct 8 12:58:28 2018 -0700
 

@@ -1,8 +1,8 @@
 
 
 $ git status
-On branch master
-Your branch is up-to-date with 'origin/master'.
+On branch main
+Your branch is up-to-date with 'origin/main'.
 
 nothing to commit, working tree clean
 
@@ -19,8 +19,8 @@ dir1  dir2  file1.py  file2.py  LICENSE  README.md
 
 
 $ git status
-On branch master
-Your branch is up-to-date with 'origin/master'.
+On branch main
+Your branch is up-to-date with 'origin/main'.
 
 Changes to be committed:
   (use "git reset HEAD <file>..." to unstage)
@@ -30,14 +30,14 @@ Changes to be committed:
 
 # Commit the change
 $ git commit -m "Deleting file3.py"
-[master 4c854a0] Deleting file3.py
+[main 4c854a0] Deleting file3.py
  1 file changed, 3 deletions(-)
  delete mode 100644 file3.py
 
 
 $ git status
-On branch master
-Your branch is ahead of 'origin/master' by 1 commit.
+On branch main
+Your branch is ahead of 'origin/main' by 1 commit.
   (use "git push" to publish your local commits)
 
 nothing to commit, working tree clean

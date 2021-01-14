@@ -1,26 +1,26 @@
 
 $ git branch
-  master
+  main
 * test
 
 
-$ git checkout master
-Switched to branch 'master'
-Your branch is up-to-date with 'origin/master'.
+$ git checkout main
+Switched to branch 'main'
+Your branch is up-to-date with 'origin/main'.
 
 $ ls
 file1.py  file2.py  file3.py  LICENSE  README.md
 
 
-# Get updates on 'master' branch from GitHub
-$ git pull origin master
+# Get updates on 'main' branch from GitHub
+$ git pull origin main
 remote: Enumerating objects: 1, done.
 remote: Counting objects: 100% (1/1), done.
 remote: Total 1 (delta 0), reused 0 (delta 0), pack-reused 0
 Unpacking objects: 100% (1/1), done.
 From https://github.com/ktbyers/pynetb
- * branch            master     -> FETCH_HEAD
-   fdc6fff..a70dd35  master     -> origin/master
+ * branch            main       -> FETCH_HEAD
+   fdc6fff..a70dd35  main       -> origin/main
 Updating fdc6fff..a70dd35
 Fast-forward
  dir1/my_code1.py | 1 +
