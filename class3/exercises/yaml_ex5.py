@@ -7,6 +7,8 @@ home_dir = path.expanduser("~")
 filename = path.join(home_dir, ".netmiko.yml")
 
 with open(filename) as f:
+    # pyyaml made a backwards incompatible change to .load()
+    # the simple fix is just to call .safe_load() instead
     yaml_out = yaml.safe_load(f)
 
 cisco3 = yaml_out["cisco3"]

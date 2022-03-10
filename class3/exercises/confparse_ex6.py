@@ -9,6 +9,8 @@ if __name__ == "__main__":
     filename = path.join(home_dir, ".netmiko.yml")
 
     with open(filename) as f:
+        # pyyaml made a backwards incompatible change to .load()
+        # the simple fix is just to call .safe_load() instead
         yaml_out = yaml.safe_load(f)
 
     device = yaml_out["cisco4"]
