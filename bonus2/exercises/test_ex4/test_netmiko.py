@@ -24,4 +24,4 @@ def test_prompt():
 def test_show_version():
     """Simple test to test netmiko "show_version"""
     conn = netmiko_connect()
-    assert "4.20.10M" in conn.send_command("show version")
+    assert "4.28.0F" in conn.send_command("show version")
