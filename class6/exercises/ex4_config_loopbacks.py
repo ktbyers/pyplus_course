@@ -1,5 +1,6 @@
 import os
 import pyeapi
+from rich import print
 from jinja2 import FileSystemLoader, StrictUndefined
 from jinja2.environment import Environment
 from getpass import getpass
@@ -40,6 +41,9 @@ if __name__ == "__main__":
         output = device_obj.enable("show ip interface brief")
         print()
         print("-" * 50)
-        print(output[0]["result"]["output"].rstrip())
+        show_ip_dict = output[0]["result"]["interfaces"]
+        for intf_name, v in show_ip_dict.items():
+            ip_addr = v["interfaceAddress"]["ipAddr"]["address"]
+            print(f"{intf_name} -> {ip_addr}")
         print("-" * 50)
     print()
