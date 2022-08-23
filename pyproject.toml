@@ -1,3 +1,12 @@
 [tool.black]
 line-length = 88
 exclude = 'class4/collateral/textfsm.py|bonus2/collateral/PYCODESTYLE_EX|bonus2/exercises/fixme_orig.py|bonus2/exercises/fixme_pep8.py|bonus2/exercises/fixme_pylint.py'
+
+[tool.pylama]
+format = "pycodestyle"
+skip = "tests/*,build/*,.tox/*,class4/collateral/textfsm.py,bonus2/collateral/*,bonus2/exercises/fixme_orig.py"
+linters = "mccabe,pycodestyle,pyflakes"
+ignore = "D203,C901"
+
+[tool.pylama.linter.pycodestyle]
+max_line_length = 100

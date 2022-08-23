@@ -12,7 +12,7 @@ def open_napalm_connection(device):
     driver = get_network_driver(platform)
     conn = driver(**device)
     conn.open()
-    return(conn)
+    return conn
 
 
 def main():
