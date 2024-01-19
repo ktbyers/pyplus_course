@@ -26,7 +26,7 @@ if __name__ == "__main__":
         "authorization": "Token {}".format(token),
     }
 
-    # Reformat to get the proper structure for the existing object 
+    # Reformat to get the proper structure for the existing object
     # Only use "id" for these fields (strange Netbox requires this)
     for field in ["device_type", "site", "role"]:
         arista6[field] = {"id": arista6[field]["id"]}
