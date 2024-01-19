@@ -22,7 +22,8 @@ router bgp 44
 """
 
 # When feeding config directly - CiscoConfParse requires a list
-bgp_obj = CiscoConfParse(bgp_config.splitlines())
+# ignore_blank_lines=False so that ciscoconfparse does not emit logging message to stderr
+bgp_obj = CiscoConfParse(bgp_config.splitlines(), ignore_blank_lines=False)
 
 # Result of find_objects_w_parents will be the child objects
 bgp_peers = []

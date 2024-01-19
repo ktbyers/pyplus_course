@@ -18,7 +18,8 @@ if __name__ == "__main__":
     show_run = net_connect.send_command("show run")
 
     # When feeding config directly - CiscoConfParse requires a list
-    cisco_cfg = CiscoConfParse(show_run.splitlines())
+    # ignore_blank_lines=False so that ciscoconfparse does not emit logging message to stderr
+    cisco_cfg = CiscoConfParse(show_run.splitlines(), ignore_blank_lines=False)
     interfaces = cisco_cfg.find_objects_w_child(
         parentspec=r"^interface", childspec=r"^\s+ip address"
     )
