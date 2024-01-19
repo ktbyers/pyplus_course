@@ -12,7 +12,7 @@ if __name__ == "__main__":
     """
     HTTP PUT
     URL: https://netbox.lasthop.io/api/dcim/devices/8/
-    HTTP Headers: {'Content-Type': 'application/json; version=2.4;', 'authorization': 'Token x'}
+    HTTP Headers: {'Content-Type': 'application/json', 'authorization': 'Token x'}
     PUT DATA: {'id': 8, 'name': 'arista6', 'display_name': 'arista6', 'device_type': 2,
     'device_role': 3, 'tenant': None, 'platform': 4, 'serial': '', 'asset_tag': None,
     'site': 1, 'rack': 2, 'position': None,
@@ -25,24 +25,30 @@ if __name__ == "__main__":
     token = os.environ["NETBOX_TOKEN"]
 
     # Arista6
-    url = "https://netbox.lasthop.io/api/dcim/devices/8/"
+    url = "https://netbox.lasthop.io/api/dcim/devices/6/"
     http_headers = {
-        "accept": "application/json; version=2.4;",
+        "accept": "application/json",
         "authorization": "Token {}".format(token),
     }
     response = requests.get(url, headers=http_headers, verify=False)
     arista6 = response.json()
 
     http_headers = {
-        "Content-Type": "application/json; version=2.4;",
+        "Content-Type": "application/json",
         "authorization": "Token {}".format(token),
     }
 
-    # Reformat to get the proper structure for the existing object
-    for field in ["device_role", "device_type", "platform", "site", "rack"]:
-        arista6[field] = arista6[field]["id"]
-    arista6["status"] = 1
-    arista6["rack"] = 2
+    # Reformat to get the proper structure for the existing object 
+    # Only use "id" for these fields (strange Netbox requires this)
+    for field in ["device_type", "site", "role"]:
+        arista6[field] = {"id": arista6[field]["id"]}
+    # Status field is also not happy if we return what the "get" yielded
+    # so set to what we originally used when creating the device.
+    arista6["status"] = "active"
+
+    # Change the "rack"
+    arista6["rack"] = {"id": 2}
+    pprint(arista6)
 
     response = requests.put(
         url, headers=http_headers, data=json.dumps(arista6), verify=False
