@@ -13,7 +13,7 @@ if __name__ == "__main__":
     --------------------------------------------------------------------------------
     HTTP POST
     URL: https://netbox.lasthop.io/api/dcim/devices/
-    HTTP Headers: {'Content-Type': 'application/json; version=2.4;',
+    HTTP Headers: {'Content-Type': 'application/json',
         'authorization': 'Token aaaabbbbccccddddeeeeffff0000111122223333'}
     POST DATA: {'name': 'arista4', 'device_role': 3, 'device_type': 2, 'display_name': 'arista4',
         'platform': 4, 'rack': 1, 'site': 1, 'status': 1}
@@ -23,18 +23,18 @@ if __name__ == "__main__":
     token = os.environ["NETBOX_TOKEN"]
     url = "https://netbox.lasthop.io/api/dcim/devices/"
     http_headers = {
-        "Content-Type": "application/json; version=2.4;",
+        "Content-Type": "application/json",
         "authorization": "Token {}".format(token),
     }
     post_data = {
         "name": "arista8",
-        "device_role": 3,  # Distribution Switch
-        "device_type": 2,  # vEOS
-        "display_name": "arista8",
-        "platform": 4,  # Arista EOS
-        "rack": 1,  # RK1
-        "site": 1,  # Fremont Data Center
-        "status": 1,  # Active
+        "device_role": {"id": 4},  # Distribution Switch
+        "device_type": {"id": 2},  # vEOS
+        "display": "arista8",
+        "role": {"id": 4},  # Distribution Switch
+        "rack": {"id": 1},  # RK1
+        "site": {"id": 2},  # Fremont Data Center
+        "status": "active",  # Active
     }
 
     response = requests.post(
