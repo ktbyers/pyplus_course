@@ -11,7 +11,7 @@ if __name__ == "__main__":
     token = os.environ["NETBOX_TOKEN"]
 
     # Will need updated to map to arista8 that is created via add_device.py
-    url = "https://netbox.lasthop.io/api/dcim/devices/11/"
+    url = "https://netbox.lasthop.io/api/dcim/devices/14/"
 
     http_headers = {
         "Content-Type": "application/json",

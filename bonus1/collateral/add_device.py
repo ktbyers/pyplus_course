@@ -28,12 +28,12 @@ if __name__ == "__main__":
     }
     post_data = {
         "name": "arista8",
-        "device_role": {"id": 4},  # Distribution Switch
-        "device_type": {"id": 2},  # vEOS
+        "device_role": 4,  # Distribution Switch
+        "device_type": 2,  # vEOS
         "display": "arista8",
-        "role": {"id": 4},  # Distribution Switch
-        "rack": {"id": 1},  # RK1
-        "site": {"id": 2},  # Fremont Data Center
+        "role": 4,  # Distribution Switch
+        "rack": 1,  # RK1
+        "site": 2,  # Fremont Data Center
         "status": "active",  # Active
     }
 
