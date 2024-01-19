@@ -13,7 +13,7 @@ if __name__ == "__main__":
     # Working no auth
     url = "https://netbox.lasthop.io/api/dcim/"
     # url = "https://api.github.com/"
-    http_headers = {"accept": "application/json; version=2.4;"}
+    http_headers = {"accept": "application/json"}
     response = requests.get(url, headers=http_headers, verify=False)
     response = response.json()
 

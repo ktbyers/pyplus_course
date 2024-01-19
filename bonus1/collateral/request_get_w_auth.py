@@ -13,7 +13,7 @@ if __name__ == "__main__":
     token = os.environ["NETBOX_TOKEN"]
     # url = "https://netbox.lasthop.io/api/dcim/devices"
     url = "https://netbox.lasthop.io/api/dcim/devices/1"
-    http_headers = {"accept": "application/json; version=2.4;"}
+    http_headers = {"accept": "application/json"}
     if token:
         http_headers["authorization"] = "Token {}".format(token)
 
