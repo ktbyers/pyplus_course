@@ -3,6 +3,16 @@ import pytest
 from helpers import subprocess_runner
 
 TEST_CASES = [
+    "../class2/collateral/delay_factor.py",
+    "../class2/collateral/global_delay.py",
+    "../class2/collateral/ssh_keys.py",
+    "../class2/collateral/telnet_example.py",
+    "../class2/collateral/send_command_textfsm.py",
+    "../class2/collateral/nm_file_transfer.py",
+    "../class2/collateral/cfg_change.py",
+    "../class2/collateral/cfg_change_file.py",
+    "../class2/collateral/cfg_change_save.py",
+    "../class2/collateral/fast_cli.py",
     "../class2/exercises/netmiko_ex1a.py",
     "../class2/exercises/netmiko_ex1b.py",
     "../class2/exercises/netmiko_ex2.py",
@@ -10,17 +20,8 @@ TEST_CASES = [
     "../class2/exercises/netmiko_ex4.py",
     "../class2/exercises/netmiko_ex5.py",
     "../class2/exercises/netmiko_ex6.py",
-    #    "../class2/collateral/cfg_change_save.py",
-    #    "../class2/collateral/telnet_example.py",
-    #    "../class2/collateral/ssh_keys.py",
-    #    "../class2/collateral/cfg_change_file.py",
-    #    "../class2/collateral/fast_cli.py",
-    #    "../class2/collateral/global_delay.py",
-    #    "../class2/collateral/send_command_textfsm.py",
-    #    "../class2/collateral/cfg_change.py",
+    # Can't test easily as you need to know the filename in flash
     #    "../class2/collateral/ml_prompting_send_command.py",
-    #    "../class2/collateral/nm_file_transfer.py",
-    #    "../class2/collateral/delay_factor.py",
     #    "../class2/collateral/ml_prompting_timing.py",
 ]
 

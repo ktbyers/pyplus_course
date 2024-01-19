@@ -1,8 +1,9 @@
 #!/usr/bin/env python
+import os
 from getpass import getpass
 from netmiko import ConnectHandler, file_transfer
 
-password = getpass()
+password = os.getenv("PYNET_PASSWORD") if os.getenv("PYNET_PASSWORD") else getpass()
 
 nxos1 = {
     "device_type": "cisco_nxos",

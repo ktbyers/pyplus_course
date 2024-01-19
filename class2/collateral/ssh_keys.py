@@ -1,13 +1,14 @@
 from netmiko import ConnectHandler
 
-device1 = {
+device = {
     "device_type": "cisco_ios",
     "host": "cisco1.lasthop.io",
-    "username": "testuser",
+    "username": "student1",
     "use_keys": True,
-    "key_file": "/home/kbyers/.ssh/test_rsa",
+    "key_file": "~/.ssh/student_key",
+    "disable_sha2_fix": True,
 }
 
-net_connect = ConnectHandler(**device1)
+net_connect = ConnectHandler(**device)
 print(net_connect.find_prompt())
 net_connect.disconnect()
