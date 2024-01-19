@@ -20,12 +20,12 @@ def main():
 
     # HTTP PUT needs the "Content-Type" header instead of "accept"
     http_headers = {}
-    http_headers["Content-Type"] = "application/json; version=2.4;"
-    http_headers["accept"] = "application/json; version=2.4;"
+    http_headers["Content-Type"] = "application/json"
+    http_headers["accept"] = "application/json"
     http_headers["Authorization"] = f"Token {token}"
 
     # Add a description field to our IP object
-    data = {"address": "1.1.1.1/32", "description": "Rest-API testing"}
+    data = {"address": "192.0.2.231/32", "description": "Rest-API testing"}
 
     # PUT (see notes in lesson about PATCH) to update our IP with a description
     resp = requests.put(

@@ -18,8 +18,8 @@ def main():
 
     # HTTP delete needs the "Content-Type" header instead of "accept"
     http_headers = {}
-    http_headers["Content-Type"] = "application/json; version=2.4;"
-    http_headers["accept"] = "application/json; version=2.4;"
+    http_headers["Content-Type"] = "application/json"
+    http_headers["accept"] = "application/json"
     http_headers["Authorization"] = f"Token {token}"
 
     # Delete our previously created IP address

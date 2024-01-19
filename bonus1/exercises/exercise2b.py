@@ -14,7 +14,7 @@ def main():
 
     print()
     http_headers = {}
-    http_headers["accept"] = "application/json; version=2.4;"
+    http_headers["accept"] = "application/json"
 
     # Get top level endpoints
     resp = requests.get(BASE_URL, headers=http_headers, verify=False)

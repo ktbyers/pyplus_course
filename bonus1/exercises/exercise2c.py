@@ -14,7 +14,7 @@ def main():
 
     print()
     http_headers = {}
-    http_headers["accept"] = "application/json; version=2.4;"
+    http_headers["accept"] = "application/json"
 
     # Retrieve /api/dcim/
     resp = requests.get(f"{BASE_URL}dcim/", headers=http_headers, verify=False)
