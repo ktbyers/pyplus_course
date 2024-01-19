@@ -9,16 +9,6 @@ requests.packages.urllib3.disable_warnings(category=InsecureRequestWarning)
 
 
 if __name__ == "__main__":
-    """
-    --------------------------------------------------------------------------------
-    HTTP POST
-    URL: https://netbox.lasthop.io/api/dcim/devices/
-    HTTP Headers: {'Content-Type': 'application/json',
-        'authorization': 'Token aaaabbbbccccddddeeeeffff0000111122223333'}
-    POST DATA: {'name': 'arista4', 'device_role': 3, 'device_type': 2, 'display_name': 'arista4',
-        'platform': 4, 'rack': 1, 'site': 1, 'status': 1}
-    --------------------------------------------------------------------------------
-    """
 
     token = os.environ["NETBOX_TOKEN"]
     url = "https://netbox.lasthop.io/api/dcim/devices/"
