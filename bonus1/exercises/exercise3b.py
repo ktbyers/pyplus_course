@@ -15,7 +15,7 @@ def main():
     token = os.environ["NETBOX_TOKEN"]
 
     http_headers = {}
-    http_headers["accept"] = "application/json; version=2.4;"
+    http_headers["accept"] = "application/json"
     http_headers["Authorization"] = f"Token {token}"
 
     # Retrieve all the devices
@@ -28,7 +28,7 @@ def main():
     for dev in results:
         print()
         print("-" * 60)
-        device_name = dev["display_name"]
+        device_name = dev["display"]
         location = dev["site"]["name"]
         manufacturer = dev["device_type"]["manufacturer"]["name"]
         status = dev["status"]["label"]

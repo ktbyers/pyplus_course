@@ -15,7 +15,7 @@ def main():
     token = os.environ["NETBOX_TOKEN"]
 
     http_headers = {}
-    http_headers["accept"] = "application/json; version=2.4;"
+    http_headers["accept"] = "application/json"
     http_headers["Authorization"] = f"Token {token}"
 
     # Retrieve all the devices
@@ -27,10 +27,10 @@ def main():
     # Create a list of all our devices with their friendly "display_name"
     devices = []
     for dev in results:
-        devices.append(dev["display_name"])
+        devices.append(dev["display"])
 
     # Or if you prefer list-comprehensions
-    # devices = [dev["display_name"] for dev in results]
+    # devices = [dev["display"] for dev in results]
 
     print()
     print(devices)
