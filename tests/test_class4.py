@@ -4,8 +4,15 @@ from helpers import subprocess_runner
 import re
 
 TEST_CASES = [
+    "../class4/collateral/textfsm_simple.py",
     "../class4/exercises/ex7_show_int_status.py",
-    #    COLLATERAL
+]
+
+TEST_TSFM_COLLATERAL = [
+    # COLLATERAL
+    "../class4/collateral/show_version",
+    "../class4/collateral/show_ip_bgp",
+    "../class4/collateral/show_ip_int_brief",
 ]
 
 TEST_CASES_TEXTFSM = [
@@ -48,6 +55,17 @@ def test_runner(test_case):
     python_script = path_obj.name
     script_dir = path_obj.parents[0]
     cmd_list = ["python", python_script]
+    std_out, std_err, return_code = subprocess_runner(cmd_list, script_dir)
+    assert return_code == 0
+    assert std_err == ""
+
+
+@pytest.mark.parametrize("test_case", TEST_TSFM_COLLATERAL)
+def test_runner_textfsm_col(test_case):
+    path_obj = Path(test_case)
+    base_file_name = path_obj.name
+    script_dir = path_obj.parents[0]
+    cmd_list = ["python", "textfsm.py", f"{base_file_name}.template", f"{base_file_name}.txt"]
     std_out, std_err, return_code = subprocess_runner(cmd_list, script_dir)
     assert return_code == 0
     assert std_err == ""
