@@ -4,6 +4,15 @@ from helpers import subprocess_runner
 
 
 TEST_CASES = [
+    # COLLATERAL
+    "../class3/collateral/data_structures_test_arp.py",
+    "../class3/collateral/data_structures_test_interfaces.py",
+    "../class3/collateral/data_structures_test_lldp.py",
+    "../class3/collateral/read_json.py",
+    "../class3/collateral/read_yaml.py",
+    "../class3/collateral/write_json.py",
+    "../class3/collateral/write_yaml.py",
+    # Exercises
     "../class3/exercises/data_struct_ex1.py",
     "../class3/exercises/data_struct_ex2.py",
     "../class3/exercises/data_struct_ex3.py",
@@ -11,7 +20,6 @@ TEST_CASES = [
     "../class3/exercises/yaml_ex5.py",
     "../class3/exercises/confparse_ex6.py",
     "../class3/exercises/confparse_ex7.py",
-    #    COLLATERAL
 ]
 
 
