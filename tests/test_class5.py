@@ -3,6 +3,26 @@ import pytest
 from helpers import subprocess_runner
 
 TEST_CASES = [
+    # COLLATERAL
+    "../class5/collateral/jinja_render1.py",
+    "../class5/collateral/jinja_file.py",
+    "../class5/collateral/jinja_env.py",
+    "../class5/collateral/jinja_cond1.py",
+    "../class5/collateral/jinja_cond2.py",
+    "../class5/collateral/jinja_cond3.py",
+    "../class5/collateral/jinja_cond4.py",
+    "../class5/collateral/jinja_vars1.py",
+    "../class5/collateral/jinja_vars2.py",
+    "../class5/collateral/jinja_vars3.py",
+    "../class5/collateral/DICTS/j2_loader.py",
+    "../class5/collateral/FILTERS/j2_loader.py",
+    "../class5/collateral/INCLUDE/j2_loader.py",
+    "../class5/collateral/INCLUDE/j2_loader2.py",
+    "../class5/collateral/LISTS/j2_loader.py",
+    "../class5/collateral/LOOPS/loops1.py",
+    "../class5/collateral/LOOPS/loops2.py",
+    "../class5/collateral/LOOPS/loops3.py",
+    # Exercises
     "../class5/exercises/ex1_nxos_bgp.py",
     "../class5/exercises/ex2a_nxos_intf.py",
     "../class5/exercises/ex2b_nxos_bgp.py",
@@ -10,7 +30,6 @@ TEST_CASES = [
     "../class5/exercises/ex3_vrf.py",
     "../class5/exercises/ex4_vrf_for_loop.py",
     "../class5/exercises/ex5_full_cfg.py",
-    #    COLLATERAL
 ]
 
 
