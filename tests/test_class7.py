@@ -3,6 +3,12 @@ import pytest
 from helpers import subprocess_runner
 
 TEST_CASES = [
+    #    COLLATERAL
+    "../class7/collateral/test1_jsonrpc.py",
+    "../class7/collateral/jrpc_methods.py",
+    "../class7/collateral/test1_xml.py",
+    "../class7/collateral/xml_methods.py",
+    # Exercises
     "../class7/exercises/ex1_xml_basics.py",
     "../class7/exercises/ex2_xmltodict.py",
     "../class7/exercises/ex3_xmltodict_forcelist.py",
@@ -10,7 +16,7 @@ TEST_CASES = [
     "../class7/exercises/ex5_xml_namespaces.py",
     "../class7/exercises/ex6_nxapi_jrpc.py",
     "../class7/exercises/ex7_nxapi_xml.py",
-    #    COLLATERAL
+
 ]
 
 
