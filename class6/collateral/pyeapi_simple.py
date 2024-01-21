@@ -1,14 +1,16 @@
+import os
 import pyeapi
 from getpass import getpass
 import ipdb
 
+password = os.getenv("PYNET_PASSWORD") if os.getenv("PYNET_PASSWORD") else getpass()
 
-ipdb.set_trace()
+# ipdb.set_trace()
 connection = pyeapi.client.connect(
     transport="https",
     host="arista8.lasthop.io",
     username="pyclass",
-    password=getpass(),
+    password=password,
     port="443",
 )
 

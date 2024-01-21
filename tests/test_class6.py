@@ -4,12 +4,20 @@ from helpers import subprocess_runner
 
 
 TEST_CASES = [
+    # COLLATERAL
+    "../class6/collateral/eapi_simple.py",
+    "../class6/collateral/eapi_config.py",
+    "../class6/collateral/pyeapi_simple.py",
+    "../class6/collateral/pyeapi_show.py",
+    "../class6/collateral/pyeapi_config.py",
+    # "../class6/collateral/pyeapi_w_conf.py",
+    "../class6/collateral/pyeapi_api.py",
+    # Exercises
     "../class6/exercises/ex1_show_ip_arp.py",
     "../class6/exercises/ex2a_yaml_inventory.py",
     "../class6/exercises/ex2b_reusable_func.py",
     "../class6/exercises/ex3_show_routes.py",
     "../class6/exercises/ex4_config_loopbacks.py",
-    #    COLLATERAL
 ]
 
 

@@ -1,3 +1,4 @@
+import os
 import requests
 import json
 from pprint import pprint
@@ -17,7 +18,7 @@ if __name__ == "__main__":
     host = "arista8.lasthop.io"
     port = 443
     username = "pyclass"
-    password = getpass()
+    password = os.getenv("PYNET_PASSWORD") if os.getenv("PYNET_PASSWORD") else getpass()
 
     url = "https://{}:{}/command-api".format(host, port)
 
