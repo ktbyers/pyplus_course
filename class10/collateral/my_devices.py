@@ -1,7 +1,8 @@
+import os
 from getpass import getpass
 
-
-std_pwd = getpass()
+test_mode = os.getenv("PYNET_PASSWORD")
+std_pwd = os.getenv("PYNET_PASSWORD") if test_mode else getpass()
 
 cisco3 = {
     "device_type": "cisco_ios",

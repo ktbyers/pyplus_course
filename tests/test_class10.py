@@ -4,6 +4,14 @@ from helpers import subprocess_runner
 
 
 TEST_CASES = [
+    #    COLLATERAL
+    "../class10/collateral/ssh_threads_simple.py",
+    "../class10/collateral/ssh_threads_wait.py",
+    "../class10/collateral/ssh_threads_map.py",
+    "../class10/collateral/ssh_threads_map2.py",
+    "../class10/collateral/ssh_threads_ascompleted.py",
+    "../class10/collateral/ssh_threads_ascompleted_cm.py",
+    # Exercises
     "../class10/exercises/ex1_serial.py",
     "../class10/exercises/ex2_legacy_threads.py",
     "../class10/exercises/ex3a_cf_wait.py",
@@ -11,7 +19,6 @@ TEST_CASES = [
     "../class10/exercises/ex4_cf_ascompleted_procs.py",
     "../class10/exercises/ex5_cf_procs_cm.py",
     "../class10/exercises/ex6_cf_map.py",
-    #    COLLATERAL
 ]
 
 
