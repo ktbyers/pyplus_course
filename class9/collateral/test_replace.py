@@ -1,16 +1,19 @@
 #!/usr/bin/env python
+import os
 from getpass import getpass
 from napalm import get_network_driver
 
+test_mode = os.getenv("PYNET_PASSWORD")
+password = os.getenv("PYNET_PASSWORD") if test_mode else getpass()
 
 def hit_enter():
-    input("Hit enter to continue: ")
+    if not test_mode:
+        input("Hit enter to continue: ")
 
 
 if __name__ == "__main__":
     host = "cisco3.lasthop.io"
     username = "pyclass"
-    password = getpass()
     # optional_args = {}
     optional_args = {"inline_transfer": True}
 

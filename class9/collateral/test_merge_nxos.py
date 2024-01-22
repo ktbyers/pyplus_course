@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+import os
 from getpass import getpass
 from napalm import get_network_driver
 
@@ -7,15 +8,20 @@ from requests.packages.urllib3.exceptions import InsecureRequestWarning
 
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 
+test_mode = os.getenv("PYNET_PASSWORD")
+password = os.getenv("PYNET_PASSWORD") if test_mode else getpass()
+
 
 def hit_enter():
-    input("Hit enter to continue: ")
+    if not test_mode:
+        input("Hit enter to continue: ")
 
 
 if __name__ == "__main__":
+
+
     host = "nxos1.lasthop.io"
     username = "pyclass"
-    password = getpass()
     optional_args = {"port": 8443}
 
     driver = get_network_driver("nxos")
@@ -30,9 +36,9 @@ if __name__ == "__main__":
     print(">>>Load config change (merge) - no commit")
     device.load_merge_candidate(filename="nxos-merge.conf")
     print(device.compare_config())
-    import ipdb
+    # import ipdb
 
-    ipdb.set_trace()
+    # ipdb.set_trace()
     hit_enter()
 
     print()

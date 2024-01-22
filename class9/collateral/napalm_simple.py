@@ -1,13 +1,16 @@
 #!/usr/bin/env python
+import os
 from getpass import getpass
 from pprint import pprint
 from napalm import get_network_driver
+
+password = os.getenv("PYNET_PASSWORD") if os.getenv("PYNET_PASSWORD") else getpass()
 
 cisco3 = dict(
     hostname="cisco3.lasthop.io",
     device_type="ios",
     username="pyclass",
-    password=getpass(),
+    password=password,
     optional_args={},
 )
 

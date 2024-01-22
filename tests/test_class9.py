@@ -3,11 +3,17 @@ import pytest
 from helpers import subprocess_runner
 
 TEST_CASES = [
+    #    COLLATERAL
+    "../class9/collateral/napalm_get.py",
+    "../class9/collateral/napalm_get_config.py",
+    "../class9/collateral/napalm_simple.py",
+    "../class9/collateral/test_merge_nxos.py",
+    "../class9/collateral/test_replace.py",
+    # Exercises
     "../class9/exercises/ex1_napalm_conn.py",
     "../class9/exercises/ex2_napalm_getters.py",
     "../class9/exercises/ex3_napalm_merge.py",
     "../class9/exercises/ex4_napalm_replace.py",
-    #    COLLATERAL
 ]
 
 

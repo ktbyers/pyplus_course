@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+import os
 from getpass import getpass
 from napalm import get_network_driver
 
@@ -10,7 +11,7 @@ requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 
 
 # Device definitions
-password = getpass()
+password = os.getenv("PYNET_PASSWORD") if os.getenv("PYNET_PASSWORD") else getpass()
 cisco3 = dict(
     hostname="cisco3.lasthop.io",
     device_type="ios",
