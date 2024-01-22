@@ -1,11 +1,14 @@
+import os
 import ipdb
 from ncclient import manager
 from getpass import getpass
 
+password = os.getenv("PYNET_PASSWORD") if os.getenv("PYNET_PASSWORD") else getpass()
+
 conn = manager.connect(
     host="srx2.lasthop.io",
     username="pyclass",
-    password=getpass(),
+    password=password,
     device_params={"name": "junos"},
     hostkey_verify=False,
     allow_agent=False,
@@ -14,7 +17,7 @@ conn = manager.connect(
     timeout=60,
 )
 
-ipdb.set_trace()
+# ipdb.set_trace()
 config = conn.get_config(source="running")
 config_xml = config.data_xml
 print(config_xml)

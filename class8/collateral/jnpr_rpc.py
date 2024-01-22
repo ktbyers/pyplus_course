@@ -1,11 +1,12 @@
 #!/usr/bin/env python
-from __future__ import print_function, unicode_literals
-
+import os
 from jnpr.junos import Device
 from lxml import etree
 from getpass import getpass
 
-juniper_srx = {"host": "srx2.lasthop.io", "user": "pyclass", "password": getpass()}
+password = os.getenv("PYNET_PASSWORD") if os.getenv("PYNET_PASSWORD") else getpass()
+
+juniper_srx = {"host": "srx2.lasthop.io", "user": "pyclass", "password": password}
 
 a_device = Device(**juniper_srx)
 a_device.open()
