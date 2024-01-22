@@ -4,6 +4,13 @@ from helpers import subprocess_runner
 
 
 TEST_CASES = [
+    #    COLLATERAL
+    "../bonus1/collateral/request_get.py",
+    "../bonus1/collateral/request_get_w_auth.py",
+    "../bonus1/collateral/add_device.py",
+    "../bonus1/collateral/delete_device.py",
+    "../bonus1/collateral/modify_device.py",
+    # Exercises
     "../bonus1/exercises/exercise2a.py",
     "../bonus1/exercises/exercise2b.py",
     "../bonus1/exercises/exercise2c.py",
@@ -14,7 +21,6 @@ TEST_CASES = [
     # previously created object
     #    "../bonus1/exercises/exercise5.py",
     #    "../bonus1/exercises/exercise6.py",
-    #    COLLATERAL
 ]
 
 
