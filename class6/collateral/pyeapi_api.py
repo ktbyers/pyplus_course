@@ -12,7 +12,9 @@ connection = pyeapi.client.connect(
     port="443",
 )
 
-enable = os.getenv("PYNET_PASSWORD") if os.getenv("PYNET_PASSWORD") else getpass("Enable: ")
+enable = (
+    os.getenv("PYNET_PASSWORD") if os.getenv("PYNET_PASSWORD") else getpass("Enable: ")
+)
 device = pyeapi.client.Node(connection, enablepwd=enable)
 
 vlan_cfg = device.api("vlans")

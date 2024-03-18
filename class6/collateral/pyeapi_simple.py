@@ -1,7 +1,8 @@
 import os
 import pyeapi
 from getpass import getpass
-import ipdb
+
+# import ipdb
 
 password = os.getenv("PYNET_PASSWORD") if os.getenv("PYNET_PASSWORD") else getpass()
 

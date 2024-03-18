@@ -19,7 +19,6 @@ def hit_enter():
 
 if __name__ == "__main__":
 
-
     host = "nxos1.lasthop.io"
     username = "pyclass"
     optional_args = {"port": 8443}

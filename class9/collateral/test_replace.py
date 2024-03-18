@@ -6,6 +6,7 @@ from napalm import get_network_driver
 test_mode = os.getenv("PYNET_PASSWORD")
 password = os.getenv("PYNET_PASSWORD") if test_mode else getpass()
 
+
 def hit_enter():
     if not test_mode:
         input("Hit enter to continue: ")

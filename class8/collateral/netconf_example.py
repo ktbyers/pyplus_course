@@ -1,5 +1,6 @@
 import os
-import ipdb
+
+# import ipdb
 from ncclient import manager
 from getpass import getpass
 

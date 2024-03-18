@@ -16,7 +16,6 @@ TEST_CASES = [
     "../class7/exercises/ex5_xml_namespaces.py",
     "../class7/exercises/ex6_nxapi_jrpc.py",
     "../class7/exercises/ex7_nxapi_xml.py",
-
 ]
 
 
